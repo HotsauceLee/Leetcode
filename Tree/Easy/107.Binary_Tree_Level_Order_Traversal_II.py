@@ -5,7 +5,7 @@
 #         self.left = None
 #         self.right = None
 
-######## Resursion ##############
+######## Level traversal ##############
 # Running time: 66ms
 # Time complexity: O(n)
 # Space complexity: O(n)
