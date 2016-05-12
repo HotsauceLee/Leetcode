@@ -41,7 +41,7 @@ class Solution(object):
         
         
 ######## Stack ##############
-# Running time: 84ms
+# Running time: 76ms
 # Time complexity: O(n)
 # Space complexity: O(n)
 class Solution(object):
