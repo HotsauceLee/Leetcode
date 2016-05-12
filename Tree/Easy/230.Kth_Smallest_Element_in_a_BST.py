@@ -40,7 +40,7 @@ class Solution(object):
         self.helper(root.right)
         
         
-######## Resursion ##############
+######## Stack ##############
 # Running time: 84ms
 # Time complexity: O(n)
 # Space complexity: O(n)
