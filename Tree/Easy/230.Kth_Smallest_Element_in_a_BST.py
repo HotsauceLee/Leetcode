@@ -5,6 +5,10 @@
 #         self.left = None
 #         self.right = None
 
+######## Resursion ##############
+# Running time: 96ms
+# Time complexity: O(n)
+# Space complexity: O(n)
 class Solution(object):
     
     kth = 0
