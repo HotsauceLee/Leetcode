@@ -1,0 +1,12 @@
+DP - "optimal substructure" + "overlapping of subproblems"
+
+Think naviely first, find the first step to solve the problem, a.k.a. find the substructure.
+
+Then find the overlapping steps, find a way to optimize it.
+
+Usually sacrifice space to reduce time.
+
+
+
+Important:
+337. House Robber III
