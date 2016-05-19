@@ -1,10 +1,8 @@
 DP - "optimal substructure" + "overlapping of subproblems"
 
-Think naviely first, find the first step to solve the problem, a.k.a. find the substructure.
+Think naviely first, find the first step to solve the problem, a.k.a. find the substructure. Usually start with recursion, find Termination condition and Recurrence relation.
 
-Then find the overlapping steps, find a way to optimize it.
-
-Usually sacrifice space to reduce time.
+Then find the overlapping steps, find a way to optimize it. Usually sacrifice space to reduce time.
 
 
 
