@@ -29,7 +29,7 @@ class Solution(object):
             
         return max((root.val +val1), (self.rob(root.left) + self.rob(root.right)))
 
-######## DP + Resursion ##############
+######## DP(hash) + Resursion ##############
 # Running time: very large ms
 # Time complexity: 
 # Space complexity: 
@@ -61,3 +61,31 @@ class Solution(object):
         map[root] = max_val
         
         return max_val
+
+######## Resursion(knowing root is robbed or not) ##############
+# Running time: very large ms
+# Time complexity: 
+# Space complexity: 
+
+class Solution(object):
+    def rob(self, root):
+        """
+        :type root: TreeNode
+        :rtype: int
+        """
+        result = self.robHelper(root)
+        
+        return max(result[0], result[1])
+        
+    def robHelper(self, root):
+        if root is None:
+            return [0, 0]
+            
+        left = self.robHelper(root.left)
+        right = self.robHelper(root.right)
+        
+        current = []
+        current.append(max(left[0], left[1]) + max(right[0], right[1]))
+        current.append(root.val + left[0] + right[0])
+        
+        return current
