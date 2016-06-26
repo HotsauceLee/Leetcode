@@ -7,7 +7,7 @@
 
 ######## Resursion ##############
 # Running time: 168ms
-# Time complexity: 
+# Time complexity: O(log(n)^2)
 # Space complexity: 
 class Solution(object):
     def countNodes(self, root):
@@ -28,6 +28,20 @@ class Solution(object):
         while (r is not None):
             r = r.right
             r_dep += 1
+
+        ```better loop
+        depth = 0
+        l = root.left
+        r = root.right
+        while (r is not None):
+            l = l.left
+            r = r.right
+            depth += 1
+            
+        if l is None:
+            return 2**(depth + 1) - 1
+
+        ```
             
         if l_dep == r_dep:
             return 2**(l_dep + 1) - 1
