@@ -28,4 +28,32 @@ class Solution(object):
             return False
             
         return self.helper(root.left, min, root.val) and self.helper(root.right, root.val, max)
+
+
+######## Resursion with prev ##############
+# Running time: 72ms
+# Time complexity: O(n)
+# Space complexity: O(n)
+
+class Solution(object):
+    prev = None
+    
+    def isValidBST(self, root):
+        """
+        :type root: TreeNode
+        :rtype: bool
+        """
+        return self.helper(root, self.prev)
         
+    def helper(self, root, prev):
+        if root is None:
+            return True
+            
+        if not self.helper(root.left, self.prev):
+            return False
+            
+        if (self.prev is not None) and (self.prev.val >= root.val):
+            return False
+        
+        self.prev = root
+        return self.helper(root.right, self.prev)
