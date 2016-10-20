@@ -8,3 +8,7 @@ Then find the overlapping steps, find a way to optimize it. Usually sacrifice sp
 
 Important:
 337. House Robber III
+
+Catgories:
+
+1. 最优解
