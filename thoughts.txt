@@ -12,3 +12,4 @@ Important:
 Catgories:
 
 1. 最优解
+  在每一步取最优，递归到最初
