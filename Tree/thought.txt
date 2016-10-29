@@ -1,0 +1,93 @@
+1. Pre, Post, In order traversal
+
+There is an universal idea for preorder traversal inorder traversal and postorder traversal. For each node N, we process it as follows:-------
+push N in stack -> push left tree of N in stack -> pop left tree of N -> push right tree of N in stack -> pop right tree of N -> pop N---------
+For preorder traversal, we visit a node when pushing it in stack. For inorder traversal, we visit a node when pushing its right child in stack. for postorder traversal, we visit a node when popping it. last_pop represents the node which is popped the last time. For the top node in stack, it has three choices, pushing its left child in stack, or pushing its right child in stack, or being popped. If last_pop != top->left, meaning that its left tree has not been pushed in stack, then we push its left child. If last_pop == top->left, we push its right child. Otherwise, we pop the top node.
+
+
+
+rder_traversal_iteratively(TreeNode* root)
+{
+	if (root == 0)
+		return;
+	stack<TreeNode*> s;
+	s.push(root);
+	cout << root->val << ' '; // visit root
+	TreeNode* last_pop = root;
+	while (!s.empty())
+	{
+		TreeNode* top = s.top();
+		if (top->left != 0 && top->left != last_pop && top->right != last_pop) // push_left
+		{
+			s.push(top->left);
+			cout << top->left->val << ' '; // visit top->left
+		}
+		else if (top->right != 0 && top->right != last_pop && (top->left == 0 || top->left == last_pop)) // push_right
+		{
+			s.push(top->right);
+			cout << top->right->val << ' '; // visit top->right
+		}
+		else // pop
+		{
+			s.pop();
+			last_pop = top;
+		}
+	}
+}
+
+void inorder_traversal_iteratively(TreeNode* root)
+{
+	if (root == 0)
+		return;
+	stack<TreeNode*> s;
+	s.push(root);
+	TreeNode* last_pop = root;
+	while (!s.empty())
+	{
+		TreeNode* top = s.top();
+		if (top->left != 0 && top->left != last_pop && top->right != last_pop) // push_left
+		{
+			s.push(top->left);
+		}
+		else if (top->right != 0 && top->right != last_pop && (top->left == 0 || top->left == last_pop)) // push_right
+		{
+			s.push(top->right);
+			cout << top->val << ' '; // visit top
+		}
+		else // pop
+		{
+			s.pop();
+			last_pop = top;
+			if (top->right == 0)
+				cout << top->val << ' '; // visit top
+		}
+	}
+}
+
+void postorder_traversal_iteratively(TreeNode* root)
+{
+	if (root == 0)
+		return;
+	stack<TreeNode*> s;
+	s.push(root);	
+	TreeNode* last_pop = root;
+	while (!s.empty())
+	{		
+		TreeNode* top = s.top();
+		if (top->left != 0 && top->left != last_pop && top->right != last_pop) // push_left
+		{
+			s.push(top->left);
+		}
+		else if (top->right != 0 && top->right != last_pop && (top->left == 0 || top->left == last_pop)) // push_right
+		{
+			s.push(top->right);
+		}
+		else // pop
+		{
+			s.pop();
+			last_pop = top;
+			cout << top->val << ' '; // visit top
+		}
+	}
+}
+
