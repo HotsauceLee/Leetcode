@@ -47,7 +47,8 @@ class LRUCache1(object):
         
         
 class DLL(object):
-    def __init__(self, value=None):
+    def __init__(self, key=None, value=None):
+        self.key = key
         self.val = value
         self.prev = None
         self.next = None
@@ -90,8 +91,8 @@ class LRUCache2(object):
         """
         if self.cap <= 0: reutrn
         if self.d.has_key(key):
-            new_node = DDL(value)
-            self.d[key] = new_node
+            node = self.d[key]
+            node.val = value
             self.move_to_head(key)
             return
         
@@ -99,17 +100,16 @@ class LRUCache2(object):
             self.pop()
             self.vol -= 1
         
-        self.append(key, DLL(value))
+        new_node = self.append(key, value)
+        self.d[key] = new_node
         self.vol += 1
             
         
         
     def move_to_head(self, key):
-        node = self.remove(key)
-        self.append(key, node)
-        
-        
-        
+        value_node = self.d[key]
+        self.remove(key)
+        self.append(key, value_node.val)
         
     def remove(self, key):
         node = self.d[key]
@@ -117,14 +117,15 @@ class LRUCache2(object):
         node.next.prev = node.prev
         self.vol -= 1
         
-        return node
-        
-    def append(self, key, node):
+    def append(self, key, value):
+        node = DLL(key, value)
         node.prev = self.head
         node.next = self.head.next
         node.next.prev = node
         self.head.next = node
         self.vol += 1
+        
+        return node
         
     def pop(self):
         self.tail = self.tail.prev
@@ -132,3 +133,16 @@ class LRUCache2(object):
         self.vol -= 1
         
         
+l2 = LRUCache2(2)
+#l2.set(1, 1)
+#l2.set(2, 2)
+#print "l2.get(1): " + str(l2.get(1))
+#l2.set(3, 3)
+#print "l2.get(2): " + str(l2.get(2))
+#print "l2.get(3): " + str(l2.get(3))
+l2.set(2,1)
+l2.set(1,1)
+l2.get(2)
+l2.set(4,1)
+l2.get(1)
+l2.get(2)
