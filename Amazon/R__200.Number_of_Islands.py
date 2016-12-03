@@ -9,24 +9,21 @@ class Solution(object):
         column = len(grid[0])
         result = 0
         
-        def bfs(r, c):
-            if r >= row or r < 0 or c >= column or c < 0:
+        def dfs(r, c):
+            if r >= row or r < 0 or c >= column or c < 0 or grid[r][c] == '0':
                 return
-            if grid[r][c] == '0':
-                return
-            
+
             grid[r][c] = '0'
-            bfs(r + 1, c)
-            bfs(r - 1, c)
-            bfs(r, c + 1)
-            bfs(r, c - 1)
+            dfs(r + 1, c)
+            dfs(r - 1, c)
+            dfs(r, c + 1)
+            dfs(r, c - 1)
             
             
         for r in range(row):
             for c in range(column):
-                if grid[r][c] == '0':
-                    continue
-                bfs(r, c)
-                result += 1
+                if grid[r][c] == '1':
+                    dfs(r, c)
+                    result += 1
                 
         return result
