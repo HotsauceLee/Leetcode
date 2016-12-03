@@ -1,3 +1,7 @@
+# ================= DFS =======================
+# Time: O(n)
+# Space: O(n)
+# Running time: ~120ms
 class Solution(object):
     def numIslands(self, grid):
         """
