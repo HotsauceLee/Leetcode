@@ -12,10 +12,10 @@ class Solution(object):
         result = 0
         
         def bfs(r, c):
-            if r >= row or c >= column:
+            if r >= row or r < 0 or c >= column or c < 0:
                 return
             if grid[r][c] == '0':
-                return
+                return  
             if d.has_key((r, c)):
                 return
             
