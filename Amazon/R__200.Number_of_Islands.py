@@ -35,7 +35,7 @@ class DfsSolution(object):
 # ================= BFS =======================
 # Time: O(n)
 # Space: O(n)
-# Running time: ~120ms    
+# Running time: ~100ms    
 from collections import deque
 
 class Solution(object):
