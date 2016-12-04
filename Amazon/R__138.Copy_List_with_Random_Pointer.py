@@ -1,21 +1,30 @@
-# ================== Dict ===================
-# Time: O(n)
-# Space: O(n)
-
+# Definition for singly-linked list with a random pointer.
+# class RandomListNode(object):
+#     def __init__(self, x):
+#         self.label = x
+#         self.next = None
+#         self.random = None
 class Solution(object):
     def copyRandomList(self, head):
         """
         :type head: RandomListNode
         :rtype: RandomListNode
         """
-        entry_point = RandomListNode(-2)
+        entry_point = RandomListNode(-1)
         prev = entry_point
         cur = head
         d = {}
         while cur:
-            new_node = RandomListNode(cur.label)
-            d[cur] = new_node
-            prev.next = new_node
+            # Next
+            if d.has_key(cur):
+                prev.next = d[cur]
+                new_node = prev.next
+            else:
+                new_node = RandomListNode(cur.label)
+                d[cur] = new_node
+                prev.next = new_node
+            
+            # Random
             if not cur.random:
                 new_node.random = None
             elif d.has_key(cur.random):
@@ -29,5 +38,3 @@ class Solution(object):
             prev = prev.next
             
         return entry_point.next
-            
-        
