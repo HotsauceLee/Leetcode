@@ -30,4 +30,27 @@ class Solution(object):
                 
         return result
             
-        
+# ============== Two passes =================
+# Time: O(n)
+# Space: O(1)
+class Solution(object):
+    def productExceptSelf(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """
+        lens = len(nums)
+        result = [1]*lens
+        cur_prod = nums[0]
+        for i in range(1, lens):
+           result[i] = cur_prod
+           cur_prod *= nums[i]
+            
+        cur_prod = nums[lens - 1]
+        i = lens - 2
+        while i >= 0:
+            result[i] *= cur_prod
+            cur_prod *= nums[i]
+            i -= 1
+            
+        return result
