@@ -1,3 +1,8 @@
+# ============ deque ================
+# Time: amortized O(n)
+# Space: O(n)
+# Idea: Decending from left to right of deque. When iterating, pop the ones smaller than current value from the right.
+#    also pop the out of range ones from the left. Then the left most item in the queue will always be the largest one.
 from collections import deque
 
 class Solution(object):
@@ -25,4 +30,3 @@ class Solution(object):
             result.append(nums[q[0]])
 
         return result
-        
