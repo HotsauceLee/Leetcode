@@ -12,6 +12,29 @@ def verifyPreorder(self, preorder):
         stack.append(p)
     return True
 
+#================ Pointer ==============
+# Time: O(n)
+# Space: O(1)
+class Solution(object):
+    def verifyPreorder(self, preorder):
+        """
+        :type preorder: List[int]
+        :rtype: bool
+        """
+        low = float('-inf')
+        l = -1
+        for val in preorder:
+            if val < low: return False
+            
+            while l >= 0 and preorder[l] < val:
+                low = preorder[l]
+                l -= 1
+            l += 1
+            preorder[l] = val
+            
+        return True
+
+
 """
 Solution 1
 
