@@ -1,3 +1,6 @@
+#=============== stack ===============
+# Time: O(n)
+# Space: O(n)
 def verifyPreorder(self, preorder):
     stack = []
     low = float('-inf')
