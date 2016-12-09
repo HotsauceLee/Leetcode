@@ -28,3 +28,31 @@ class Solution(object):
             
         helper(root, 0)
         return result[0]
+
+# ================ Stack ====================
+# Time: O(n)
+# Space: O(n)
+class Solution(object):
+    def longestConsecutive(self, root):
+        """
+        :type root: TreeNode
+        :rtype: int
+        """
+        if not root: return 0
+        result = 0
+        stack = [(root, 1)]
+        while stack:
+            (cur_node, cur_sum) = stack.pop()
+            if cur_sum > result: result = cur_sum
+            if cur_node.left:
+                if cur_node.left.val == cur_node.val + 1:
+                    stack.append((cur_node.left, cur_sum + 1))
+                else:
+                    stack.append((cur_node.left, 1))
+            if cur_node.right:
+                if cur_node.right.val == cur_node.val + 1:
+                    stack.append((cur_node.right, cur_sum + 1))
+                else:
+                    stack.append((cur_node.right, 1))
+                
+        return result
