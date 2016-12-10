@@ -1,6 +1,14 @@
 # ================ Preorder with min and max ====================
 # Time: O(n)
 # Space: O(n)
+# Idea: 
+"""
+My dfs returns four values:
+
+N is the size of the largest BST in the tree.
+If the tree is a BST, then n is the number of nodes, otherwise it's -infinity.
+If the tree is a BST, then min and max are the minimum/maximum value in the tree.
+"""
 class Solution(object):
     def largestBSTSubtree(self, root):
         """
