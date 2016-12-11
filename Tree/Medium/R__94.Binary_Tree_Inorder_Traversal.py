@@ -34,3 +34,27 @@ class Solution(object):
                     result.append(last_popped.val)
                 
         return result
+    
+# =============== Recursion without global prev =======================
+# Time: O(n)
+# Space: O(n)
+class Solution(object):
+    def inorderTraversal(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[int]
+        """
+        def helper(root, prev, result):
+            if not root: return prev
+            
+            prev = helper(root.left, prev, result)
+            
+            result.append(root.val)
+            
+            prev = helper(root.right, root, result)
+            
+            return prev
+            
+        result = []
+        helper(root, None, result)
+        return result
