@@ -1,10 +1,3 @@
-# Definition for a binary tree node.
-# class TreeNode(object):
-#     def __init__(self, x):
-#         self.val = x
-#         self.left = None
-#         self.right = None
-
 #======================== Stack with lat popped =================
 # Time: O(n)
 # Space: O(log(n))
@@ -58,3 +51,28 @@ class Solution(object):
         result = []
         helper(root, None, result)
         return result
+
+# ================= Morris Traversal ===================
+
+class Sloution(object):
+	def inorderTraversal(self, root):
+		result = []
+		while root:
+			if not root.left:
+				result.append(root.val)
+				root = root.right
+			else:
+				# Find predecessor
+				predecessor = root.left
+				while predecessor.right and predecessor.right is not root:
+					predecessor = predecessor.right
+					
+				if not predecessor.right:
+					predecessor.right = root
+					root = root.left
+				else:
+					predecessor.right = None
+					result.append(root.val)
+					root = root.right
+
+		return result
