@@ -53,7 +53,16 @@ class Solution(object):
         return result
 
 # ================= Morris Traversal ===================
-
+# Time: 
+# Space: O(1)
+# Idea:
+#	1. If no left child, take root val and go to right
+#	2. if left child, find the predecessor.
+#		2.1 If no predecessor.right, that means it hasn't been
+#			visited yet, attach root to its right.
+#		2.2 If predecessor.right, that means it has been
+#			visited, set its right back to None.
+#	3. Repeat 1 and 2.
 class Sloution(object):
 	def inorderTraversal(self, root):
 		result = []
