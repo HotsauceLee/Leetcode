@@ -53,7 +53,7 @@ class Solution(object):
         return result
 
 # ================= Morris Traversal ===================
-# Time: 
+# Time: O(n)
 # Space: O(1)
 # Idea:
 #	1. If no left child, take root val and go to right
@@ -63,6 +63,14 @@ class Solution(object):
 #		2.2 If predecessor.right, that means it has been
 #			visited, set its right back to None.
 #	3. Repeat 1 and 2.
+# Time Complexity:
+"""
+时间复杂度：O(n)。证明时间复杂度为O(n)，最大的疑惑在于寻找中序遍历下二叉树中所有节点的前驱节点的时间复杂度是多少，即以下两行代码：
+
+1 while (prev->right != NULL && prev->right != cur)
+2     prev = prev->right;
+直觉上，认为它的复杂度是O(nlgn)，因为找单个节点的前驱节点与树的高度有关。但事实上，寻找所有节点的前驱节点只需要O(n)时间。n个节点的二叉树中一共有n-1条边，整个过程中每条边最多只走2次，一次是为了定位到某个节点，另一次是为了寻找上面某个节点的前驱节点，如下图所示，其中红色是为了定位到某个节点，黑色线是为了找到前驱节点。所以复杂度为O(n)。
+"""
 class Sloution(object):
 	def inorderTraversal(self, root):
 		result = []
