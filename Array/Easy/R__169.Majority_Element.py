@@ -49,6 +49,5 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        lens = len(nums)
-        sorted_list = sorted(nums)
-        return sorted_list[lens/2]
+        nums.sort()
+        return nums[len(nums)/2]
