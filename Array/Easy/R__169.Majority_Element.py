@@ -51,3 +51,9 @@ class Solution(object):
         """
         nums.sort()
         return nums[len(nums)/2]
+
+# ======= Bit ================
+
+# ========== Divide and concur =========
+
+# =========== Random ============
