@@ -72,3 +72,45 @@ class Solution(object):
                 result.append(last_node.val)
                 
         return result
+
+# ================== Morris Traversal using extra space ===================
+# Time: O(n)
+# Space: (n)
+from collections import deque
+class Solution(object):
+    def postorderTraversal(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[int]
+        """
+        result = []
+        dump = TreeNode(-1)
+        dump.left = root
+        while dump:
+            if not dump.left:
+                dump = dump.right
+            else:
+                predecessor = dump.left
+                while predecessor.right and predecessor.right is not dump:
+                    predecessor = predecessor.right
+                if not predecessor.right:
+                    predecessor.right = dump
+                    dump = dump.left
+                else:
+                    predecessor.right = None
+                    # Put reverse values in to a tmp list
+                    # then attach it to the end of result
+                    reverse = deque()
+                    frm = dump.left
+                    while frm:
+                        reverse.appendleft(frm.val)
+                        frm = frm.right
+                    result += list(reverse)
+                    dump = dump.right
+                    
+        return result
+
+# ================== Morris Traversal ===================
+# Time: O(n)
+# Space: (1)
+
