@@ -33,4 +33,39 @@ class Solution(object):
         self.helper(root.right)
 
 #============== Morris Traversal =======================
-# TODO:
+# Time: O(n)
+# Space: O(1)
+class Solution(object):
+    def recoverTree(self, root):
+        """
+        :type root: TreeNode
+        :rtype: void Do not return anything, modify root in-place instead.
+        """
+        node1 = None
+        node2 = None
+        prev = None
+        while root:
+            if not root.left:
+                if not node1 and prev and root.val <= prev.val:
+                    node1 = prev
+                if node1 and root.val <= prev.val:
+                    node2 = root
+                prev = root
+                root = root.right
+            else:
+                predecessor = root.left
+                while predecessor.right and predecessor.right is not root:
+                    predecessor = predecessor.right
+                if not predecessor.right:
+                    predecessor.right = root
+                    root = root.left
+                else:
+                    predecessor.right = None
+                    if not node1 and prev and root.val <= prev.val:
+                        node1 = prev
+                    if node1 and root.val <= prev.val:
+                        node2 = root
+                    prev = root
+                    root = root.right
+                    
+        node1.val, node2.val = node2.val, node1.val
