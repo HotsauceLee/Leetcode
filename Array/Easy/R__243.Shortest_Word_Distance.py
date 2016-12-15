@@ -1,3 +1,6 @@
+# ================== Last encountered index ===================
+# Time: O(n)
+# Space: O(1)
 class Solution(object):
     def shortestDistance(self, words, word1, word2):
         """
@@ -6,19 +9,18 @@ class Solution(object):
         :type word2: str
         :rtype: int
         """
-        last_word = None
-        distance = 0
         min_distance = float('inf')
+        last_idx = -1
         d = [word1, word2]
-        for word in words:
+        for idx, word in enumerate(words):
+            # if not one of the words, keep going
             if word in d:
-                if last_word:
-                    if word != last_word:
-                        if distance + 1 < min_distance: min_distance = distance + 1
-                    distance = 0
-                last_word = word
-            else:
-                if last_word: distance += 1
-            
-            if min_distance == 1: return 1
+                # Only do shit when already found one, otherwise update last_idx
+                if last_idx != -1:
+                    # Update min only when current word if different from the last one
+                    if words[last_idx] != words[idx]:
+                        if idx - last_idx < min_distance: min_distance = idx - last_idx
+                # Update last encountered to the current one
+                last_idx = idx
+                
         return min_distance
