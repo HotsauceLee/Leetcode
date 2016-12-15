@@ -36,33 +36,29 @@ class Solution(object):
             k += 1
         return list2
     
-"""
-back tracking with level
-public class Solution {
-    public List<List<Integer>> findLeaves(TreeNode root) {
-        List<List<Integer>> res = new ArrayList<>();
-        height(root, res);
-        return res;
-    }
-    private int height(TreeNode node, List<List<Integer>> res){
-        if(null==node)  return -1;
-        int level = 1 + Math.max(height(node.left, res), height(node.right, res));
-        if(res.size()<level+1)  res.add(new ArrayList<>());
-        res.get(level).add(node.val);
-        return level;
-    }
-}
-
-def findLeaves(self, root):
-    def dfs(node):
-        if not node:
-            return -1
-        i = 1 + max(dfs(node.left), dfs(node.right))
-        if i == len(out):
-            out.append([])
-        out[i].append(node.val)
-        return i
-    out = []
-    dfs(root)
-    return out
-"""
+#============== Recursion + back tracking ================
+# Time: O(n)
+# Space: O(n)
+class Solution(object):
+    def findLeaves(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[List[int]]
+        """
+        def helper(root, result):
+            if not root: return 0
+        
+            l = helper(root.left, result)
+            r = helper(root.right, result)
+            
+            cur = max(l, r)
+            if cur >= len(result):
+                result.append([root.val])
+            else:
+                result[cur].append(root.val)
+                
+            return cur + 1
+            
+        result = []
+        helper(root, result)
+        return result
