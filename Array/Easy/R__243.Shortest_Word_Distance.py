@@ -16,10 +16,9 @@ class Solution(object):
             # if not one of the words, keep going
             if word in d:
                 # Only do shit when already found one, otherwise update last_idx
-                if last_idx != -1:
+                if last_idx != -1 and words[last_idx] != words[idx]:
                     # Update min only when current word if different from the last one
-                    if words[last_idx] != words[idx]:
-                        if idx - last_idx < min_distance: min_distance = idx - last_idx
+                    if idx - last_idx < min_distance: min_distance = idx - last_idx
                 # Update last encountered to the current one
                 last_idx = idx
                 
