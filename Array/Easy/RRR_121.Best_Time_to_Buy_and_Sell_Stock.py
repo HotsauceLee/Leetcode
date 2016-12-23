@@ -1,6 +1,10 @@
 #============= Kadane's Algorithm===========
 # Time: O(n)
 # Space: O(1)
+# Idea:
+#    a b c d e
+#    (b-a) + (c-b) + (d-c) + (e-d) = e - a
+# Same as maximum subarray problem, but find the largest sequence of differences.
 class Solution(object):
     def maxProfit(self, prices):
         """
