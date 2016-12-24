@@ -47,3 +47,52 @@ class Solution(object):
             
         return max_sub
 # ================ Divide and Concur ==============
+# Time: O(nlog(n))
+# Space: O(log(n))
+# Idea: 
+"""
+find mid, recursively get left max and right max, then
+get the max across mid, return the largest among these
+three. 
+
+In this code, left max already includes mid, but it
+doesn't matter because if left max doesn't include
+mid, then left max will be larger than max across mid.
+if left max includes mid, max across mid will include
+left max and the largest one will depends on right max,
+which is still the right result.
+"""
+class Solution(object):
+    def maxSubArray(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        def helper(nums, left, right):
+            if left == right: return nums[left]
+            
+            mid = (right + left)/2
+            leftmax = helper(nums, left, mid)
+            rightmax = helper(nums, mid + 1, right)
+            mid_to_left_max = nums[mid]
+            mid_to_right_sum = nums[mid + 1]
+            
+            tmp = 0
+            mid_to_left = mid
+            while mid_to_left >= left:
+                tmp += nums[mid_to_left]
+                mid_to_left_max = max(mid_to_left_max, tmp)
+                mid_to_left -= 1
+                
+            tmp = 0
+            mid_to_right = mid + 1
+            while mid_to_right <= right:
+                tmp += nums[mid_to_right]
+                mid_to_right_sum = max(mid_to_right_sum, tmp)
+                mid_to_right += 1
+                
+            max_include_mid = mid_to_left_max + mid_to_right_sum
+            return max(max(leftmax, rightmax), max_include_mid)
+            
+        lens = len(nums)
+        return 0 if lens == 0 else helper(nums, 0, lens - 1)
