@@ -61,6 +61,10 @@ mid, then left max will be larger than max across mid.
 if left max includes mid, max across mid will include
 left max and the largest one will depends on right max,
 which is still the right result.
+
+I think the reason to include mid when getting left max
+is to avoid left > right, since mid = (right + left)/2 is
+floor divison, it always lean to the left.
 """
 class Solution(object):
     def maxSubArray(self, nums):
