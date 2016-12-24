@@ -24,10 +24,10 @@ class Solution(object):
         """
         max_ending_here = max_so_far = float('-inf')
         for n in nums:
-            max_so_far = max(max_so_far + n, n)
-            max_ending_here = max(max_so_far, max_ending_here)
+            max_ending_here = max(max_ending_here + n, n)
+            max_so_far = max(max_so_far, max_ending_here)
             
-        return max_e
+        return max_so_far
 # ================== DP ===================
 # Timee: O(n)
 # Space: O(n)
