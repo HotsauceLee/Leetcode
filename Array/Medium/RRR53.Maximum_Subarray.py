@@ -22,12 +22,12 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        max_sum = max_so_far = float('-inf')
+        max_ending_here = max_so_far = float('-inf')
         for n in nums:
             max_so_far = max(max_so_far + n, n)
-            max_sum = max(max_so_far, max_sum)
+            max_ending_here = max(max_so_far, max_ending_here)
             
-        return max_sum
+        return max_e
 # ================== DP ===================
 # Timee: O(n)
 # Space: O(n)
