@@ -14,6 +14,8 @@
 #    that ends in position i (which we'll call MaxEndingHere).
 #    MaxEndingHere is either A[i] plus the previous MaxEndingHere,
 #    or just A[i], whichever is larger.
+# array elements must be mix of positive and negative numbers, or
+# the answer will always be the whole array.
 class Solution(object):
     def maxSubArray(self, nums):
         """
@@ -44,3 +46,4 @@ class Solution(object):
             max_sub = max(max_sub, dp[i])
             
         return max_sub
+# ================ Divide and Concur ==============
