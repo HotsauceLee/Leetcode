@@ -1,1 +1,2 @@
 1. Multiple travels could also achieve O(N)
+2. Could use inpput as storage if wanna achieve space O(1)
