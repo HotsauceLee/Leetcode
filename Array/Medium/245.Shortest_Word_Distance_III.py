@@ -24,3 +24,21 @@ class Solution(object):
                 prev = idx
             
         return result
+    
+# ======== Same but more skinny ============
+class Solution(object):
+    def shortestWordDistance(self, words, word1, word2):
+        """
+        :type words: List[str]
+        :type word1: str
+        :type word2: str
+        :rtype: int
+        """
+        prev = None
+        result = float('inf')
+        for idx in xrange(len(words)):
+            if words[idx] == word1 or words[idx] == word2:
+                if prev is not None and (word1 == word2 or words[idx] != words[prev]):
+                    if idx - prev < result: result = idx - prev
+                prev = idx
+        return result
