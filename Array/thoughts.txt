@@ -2,3 +2,4 @@
 2. Could use inpput as storage if wanna achieve space O(1)
 3. Sometimes we can use array values as index to solve problems.
 4. A lot of DP could actually use constant space to keep the result of previous step, instead of the whole stack.
+5. Boyer-Moore Majority Vote algorithm is about which element(s) stand out the most, not just about more than half. 
