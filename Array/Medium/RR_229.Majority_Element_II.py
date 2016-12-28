@@ -45,6 +45,11 @@ class Solution(object):
  but it would be rejected in 2nd round.
 3. there are two elments appears more than n/3 times, candicates would contain both of
  them. (<n/3 other elements couldn't pair out any of the majorities.)
+ 
+ My thoughts:
+ 1. when upvoting, we could only do one candidate cause they could not be the same.
+ 2. when downvoting, we wanna downvote both cause 
+ 3. when assigning new candidates, we wanna do one by one cause 
 """
 class Solution(object):
     def majorityElement(self, nums):
