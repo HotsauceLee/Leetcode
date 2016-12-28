@@ -1,1 +1,2 @@
 1. Kadane's Algorithm
+2. sort + backtracking
