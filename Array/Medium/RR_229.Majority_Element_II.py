@@ -35,6 +35,17 @@ class Solution(object):
 # ========== Boyer-Moore =================
 # Time: O(n + n + n)
 # Space: O(1)
+# Idea:
+"""
+1. there are no elements that appears more than n/3 times, then whatever the algorithm 
+ got from 1st round wound be rejected in the second round.
+2. there are only one elements that appears more than n/3 times, after 1st round one of 
+ the candicate must be that appears more than n/3 times(<2n/3 other elements could only
+ pair out for <n/3 times), the other candicate is not necessarily be the second most frequent 
+ but it would be rejected in 2nd round.
+3. there are two elments appears more than n/3 times, candicates would contain both of
+ them. (<n/3 other elements couldn't pair out any of the majorities.)
+"""
 class Solution(object):
     def majorityElement(self, nums):
         """
