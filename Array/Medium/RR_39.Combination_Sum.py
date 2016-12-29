@@ -20,7 +20,6 @@ class Solution(object):
                 cur_path.pop()
                 sum -= candidates[i]
         
-        candidates.sort()
         result = []
         helper(candidates, target, 0, 0, [], result)
         
