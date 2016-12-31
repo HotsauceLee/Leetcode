@@ -5,3 +5,7 @@ Boyer-Moore method - Find the ones standing out
 Using array value as index
 
 BST find previous/next predcessor/successor
+
+Slow and fast pointers
+
+
