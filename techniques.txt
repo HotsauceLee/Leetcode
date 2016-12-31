@@ -1,11 +1,14 @@
-Backtracking
+1. Backtracking
+https://en.wikipedia.org/wiki/Backtracking
 
-Boyer-Moore method - Find the ones standing out
+2. Boyer-Moore method - Find the ones standing out by canceling each other's vote
+https://en.wikipedia.org/wiki/Boyer%E2%80%93Moore_majority_vote_algorithm
+https://gregable.com/2013/10/majority-vote-algorithm-find-majority.html
 
-Using array value as index
+3. Using array value as index
 
-BST find previous/next predcessor/successor
+4. BST find previous/next predcessor/successor
 
-Slow and fast pointers
+5. Slow and fast pointers
 
 
