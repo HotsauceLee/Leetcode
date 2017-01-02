@@ -85,4 +85,19 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[List[int]]
         """
-        return [[nums[j] for j in xrange(len(nums)) if i>>j&1] for i in xrange(2**len(nums))] 
+        return [[nums[j] for j in xrange(len(nums)) if i>>j&1] for i in xrange(2**len(nums))]
+    
+# ============ Iterative =============
+# Time: O(2^n): For n > 1,  2 + 22 + 23 + 24 + ... + 2^n = 2^(n+1) – 2
+# Space: O(1)
+# Idea: for n in nums, subsets containing n are subsets not containing n + n
+class Solution(object):
+    def subsets(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[List[int]]
+        """
+        result = [[]]
+        for n in nums:
+            result += [subset + [n] for subset in result]
+        return result
