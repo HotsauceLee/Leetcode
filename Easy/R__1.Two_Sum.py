@@ -8,5 +8,3 @@ class Solution(object):
 		d[val] = idx
 
 	return None
-
-# test
