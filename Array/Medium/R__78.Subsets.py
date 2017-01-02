@@ -91,6 +91,17 @@ class Solution(object):
 # Time: O(2^n): For n > 1,  2 + 22 + 23 + 24 + ... + 2^n = 2^(n+1) – 2
 # Space: O(1)
 # Idea: for n in nums, subsets containing n are subsets not containing n + n
+"""
+This problem can also be solved iteratively. Take [1, 2, 3] in the problem statement as an example. The process of generating all the subsets is like:
+
+Initially: [[]]
+Adding the first number to all the existed subsets: [[], [1]];
+Adding the second number to all the existed subsets: [[], [1], [2], [1, 2]];
+Adding the third number to all the existed subsets: [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]].
+Have you got the idea :-)
+
+
+"""
 class Solution(object):
     def subsets(self, nums):
         """
