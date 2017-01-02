@@ -77,3 +77,12 @@ class Solution(object):
             result.append(subset)
             
         return result
+    
+# One liner
+class Solution(object):
+    def subsets(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[List[int]]
+        """
+        return [[nums[j] for j in xrange(len(nums)) if i>>j&1] for i in xrange(2**len(nums))] 
