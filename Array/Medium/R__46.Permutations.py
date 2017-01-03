@@ -109,6 +109,53 @@ class Solution(object):
         return list(itertools.permutations(nums))
     
 #=========== TODO: next permutation ===============
+"""
+Well, have you solved the nextPermutation problem? If so, your code can be used in this problem. The idea is fairly simple:
+
+add nums to res;
+generate the next permutation of nums using nextPermutation(), and add it to res;
+repeat 2 until the next permutation of nums returns to the original configuration.
+The code is as follows.
+
+A final note, the following code can be applied to the problem of Permutations II without any modification since the cases of duplicates have already been handled in nextPermutation(). If you want to learn more about nextPermutation(), please visit this solution.
+
+    bool nextPermutation(vector<int>& nums) {
+        int k = -1;
+        for (int i = nums.size() - 2; i >= 0; i--) {
+            if (nums[i] < nums[i + 1]) {
+                k = i;
+                break;
+            }
+        }
+        if (k == -1) {
+            reverse(nums.begin(), nums.end());
+            return false;
+        }
+        int l = -1;
+        for (int i = nums.size() - 1; i > k; i--) {
+            if (nums[i] > nums[k]) {
+                l = i;
+                break;
+            }
+        }
+        swap(nums[k], nums[l]);
+        reverse(nums.begin() + k + 1, nums.end());
+        return true;
+    }
+    vector<vector<int>> permute(vector<int>& nums) {
+        vector<vector<int> > res;
+        sort(nums.begin(), nums.end());
+        res.push_back(nums);
+        while (nextPermutation(nums))
+            res.push_back(nums);
+        return res;
+    }
+"""
+
+
+
+
+
 
 
 """
