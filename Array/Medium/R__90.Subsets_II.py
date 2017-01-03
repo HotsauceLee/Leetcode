@@ -57,4 +57,21 @@ class Solution(object):
             
         return result
     
-
+# ========== If dup, only add to the last generated subsets ===========
+# Time: ?
+# Space: ?
+class Solution(object):
+    def subsetsWithDup(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[List[int]]
+        """
+        nums.sort()
+        result = [[]]
+        for i in xrange(len(nums)):
+            if i == 0 or nums[i] != nums[i - 1]:
+                l = len(result)
+            for j in xrange(len(result) - l, len(result)):
+                result += [result[j] + [nums[i]]]
+                
+        return result
