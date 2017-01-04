@@ -24,3 +24,25 @@ class Solution(object):
                     right = mid 
             elif left == mid or right == mid:
                 return nums[left] if nums[left] < nums[right] else nums[right]
+            
+#============ Cleaner version ==============
+# Time: O(log(n))
+# Space: O(1)
+class Solution(object):
+    def findMin(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        start, end = 0, len(nums) - 1
+        while start < end:
+            if nums[start] < nums[end]:
+                return nums[start]
+                
+            mid = (start+end)//2
+            if nums[start] <= nums[mid]:
+                start = mid+1
+            else:
+                end = mid
+                
+        return nums[start]
