@@ -55,25 +55,64 @@ class Solution(object):
             
         return result  
 
-# ======TODO =========
+# ====== DP - what if buy/sell first one now and buy/sell second one now=========
+# Time: O(n)
+# Space: O(1)
+# Idea: hold2 only start being larger than 0 when the drop is smaller than the first profit. (1)
+#       release2 only start being larger than release1 when hold2 > 0.(1)
+# keep tinking!
 """
-The thinking is simple and is inspired by the best solution from Single Number II (I read through the discussion after I use DP).
-Assume we only have 0 money at first;
-4 Variables to maintain some interested 'ceilings' so far:
-The maximum of if we've just buy 1st stock, if we've just sold 1nd stock, if we've just buy 2nd stock, if we've just sold 2nd stock.
-Very simple code too and work well. I have to say the logic is simple than those in Single Number II.
-
-public class Solution {
-    public int maxProfit(int[] prices) {
-        int hold1 = Integer.MIN_VALUE, hold2 = Integer.MIN_VALUE;
-        int release1 = 0, release2 = 0;
-        for(int i:prices){                              // Assume we only have 0 money at first
-            release2 = Math.max(release2, hold2+i);     // The maximum if we've just sold 2nd stock so far.
-            hold2    = Math.max(hold2,    release1-i);  // The maximum if we've just buy  2nd stock so far.
-            release1 = Math.max(release1, hold1+i);     // The maximum if we've just sold 1nd stock so far.
-            hold1    = Math.max(hold1,    -i);          // The maximum if we've just buy  1st stock so far. 
-        }
-        return release2; ///Since release1 is initiated as 0, so release2 will always higher than release1.
-    }
-}
-"""
+        1. 1,2,4,2,5,7,2,4,9 (two)
+        
+           h1   r1   h2   r2
+          -inf  0   -inf  0
+        1  -1   0    -1   0
+        2  -1   1    -1   1
+        4  -1   3    -1   3
+        2  -1   3     1   3
+        5  -1   4     1   6
+        7  -1   6     1   8
+        2  -1   6     4   8
+        4  -1   6     4   8
+        9  -1   8     4   13
+        
+        2. 6,4,3,5,1(one)
+        
+           h1   r1   h2   r2
+          -inf  0   -inf  0
+        6  -6   0    -6   0
+        4  -4   0    -4   0
+        3  -3   0    -3   0
+        5  -3   2    -3   2
+        1  -1   2    -1   2
+        
+        3. 1,2,3(one)
+        
+           h1   r1   h2   r2
+          -inf  0   -inf  0
+        1  -1   0    -1   0
+        2  -1   1    -1   1
+        3  -1   2    -1   2
+        
+        4. 3,2,1(zero)
+        
+           h1   r1   h2   r2
+          -inf  0   -inf  0
+        3  -3   0    -3   0
+        2  -2   0    -2   0
+        1  -1   0    -1   0
+        """
+class Solution(object):
+    def maxProfit(self, prices):
+        """
+        :type prices: List[int]
+        :rtype: int
+        """
+        hold1, release1, hold2, release2 = float('-inf'), 0, float('-inf'), 0
+        for p in prices:
+            release2 = max(release2, hold2 + p)
+            hold2 = max(hold2, release1 - p)
+            release1 = max(release1, hold1 + p)
+            hold1 = max(hold1, -p)
+            
+        return release2
