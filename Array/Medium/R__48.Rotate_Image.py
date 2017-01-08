@@ -20,16 +20,18 @@ class Solution(object):
                 matrix[r][c] = copy[r][c]
                 
 # ============ Python swap variable values ============
-# Time:
-# Space:
-# TODO:
+# Time: (n-2*0-1)+(n-2*1-1)+(n-2*2-1)+....+(n-2*(n/2)-1)
+# Space: O(1)
+# Idea: Get the 4 edges of current cube and use relative positions.
 class Solution:
     def rotate(self, A):
         n = len(A)
         for i in xrange(n/2):
             lens = len(A) - i*2
-            for j in xrange(i, i+lens-1):
-                A[i][j], A[j][n-1-i], A[n-1-i][], A[i][] = A[lens-j+1][i], A[][], A[][], A[][]
+            top, bottom, left, right = i, n-1-i, i, n-1-i
+            for j in xrange(lens-1):
+                A[top][left+j],    A[top+j][right], A[bottom][right-j], A[bottom-j][left] = \
+                A[bottom-j][left], A[top][left+j],  A[top+j][right],    A[bottom][right-j]
                 
 # =========== Swap in place ==============
 # Time: O(n/2 + n^2)
