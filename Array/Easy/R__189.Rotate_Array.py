@@ -75,7 +75,13 @@ class Solution(object):
 #========== Swap ==================
 # Time: O(n)
 # Space: O(1)
-#TODO:
+"""
+[1,2,3,4,5,6,7]  k=4
+
+[4,5,6,7,2,3,1]
+[4,5,6,7,1,3,2]
+[4,5,6,7,1,2,3]
+"""
 class Solution(object):
     def rotate(self, nums, k):
         """
@@ -83,16 +89,14 @@ class Solution(object):
         :type k: int
         :rtype: void Do not return anything, modify nums in-place instead.
         """
-        lens = len(nums)
-        if lens <= 1: return
-        k = k%lens
-        if k == 0: return
-    
-        swap = lens - k
-        i = 0
-        while i < swap:
-            nums[i], nums[swap] = nums[swap], nums[i]
-            swap += 1
-            if swap > lens - 1:
-                swap = lens - k
-            i += 1
+        k %= len(nums)
+        idx = 0
+        while idx < len(nums) - 1 and k > 0:
+            cur_len = len(nums) - idx
+            dist = cur_len - k
+            end = idx + k
+            while idx < end:
+                nums[idx], nums[idx+dist] = nums[idx+dist], nums[idx]
+                idx += 1
+            cur_len = len(nums) - idx
+            k %= cur_len
