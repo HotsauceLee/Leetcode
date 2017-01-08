@@ -49,9 +49,9 @@ class Solution(object):
         return result
                            
 # ========= Swap + back tracking ============
-# Time:
+# Time: n*(n-1)*
 # Space: 
-# Idea: Swap the currently visited one forward so that it could be used next.
+# Idea: Swap the currently chose one backward so that it couldn't be used next.
 """
 begin       nums      result
   0        [1,2,3]      []
