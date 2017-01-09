@@ -40,7 +40,7 @@ class Solution(object):
                     return True
             return False
         
-        # Binary search on window size, not 
+        # Binary search on window size, not array values
         begin, end, min_window = 1, len(nums), 0
         while begin <= end:
             mid = (begin+end)//2
