@@ -52,8 +52,31 @@ class Solution(object):
         nums.sort()
         return nums[len(nums)/2]
 
-# ======= Bit ================
-
 # ========== Divide and concur =========
+class Solution(object):
+    def majorityElement(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        if not nums: return None
+        if len(nums) == 1: return nums[0]
+        
+        a = self.majorityElement(nums[:len(nums)//2])
+        b = self.majorityElement(nums[len(nums)//2:])
+        if a == b: return a
+        return [a, b][nums.count(b) > len(nums)//2]
 
 # =========== Random ============
+from random import randrange
+
+class Solution(object):
+    def majorityElement(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        while True:
+            idx = randrange(len(nums))
+            val = nums[idx]
+            if nums.count(val) > len(nums)//2: return val
