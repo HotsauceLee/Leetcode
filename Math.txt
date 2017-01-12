@@ -3,5 +3,10 @@
 3 different, how many different pairs? C(2, 3) = 3!/(3-2)! * 2! = 3
 C(k, s) = s!/(s - k)!*k!
 
+62.Unique_Paths： m-1 item 1, n-1 item 2. how many different combinations?
+C(m-1, (m-1+n-1)) = C(n-1, (m-1+n-1))
+
+
+
 2. Permutation
 
