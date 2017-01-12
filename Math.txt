@@ -1,0 +1,7 @@
+1. Combination
+
+3 different, how many different pairs? C(2, 3) = 3!/(3-2)! * 2! = 3
+C(k, s) = s!/(s - k)!*k!
+
+2. Permutation
+
