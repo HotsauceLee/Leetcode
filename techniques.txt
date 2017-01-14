@@ -11,4 +11,6 @@ https://gregable.com/2013/10/majority-vote-algorithm-find-majority.html
 
 5. Slow and fast pointers
 
+6. KMP substring index
+
 
