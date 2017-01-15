@@ -36,4 +36,4 @@ class Solution(object):
         """
         return haystack.find(needle)
         
-# ============== TODO: KMP =====================
+# ============== TODO: KMP and RK =====================
