@@ -57,3 +57,10 @@ k(k + 1)/2 <= n
 => (k + 1/2)^2 <= 2n + 1/4
 => k <= (sqrt(8n + 1) - 1)/2
 """
+class Solution(object):
+    def arrangeCoins(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        return int(math.sqrt(n*8 + 1) - 1)/2
