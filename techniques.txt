@@ -1,3 +1,9 @@
+Questions when giving arguments:
+1. List: NUll, empty, duplicates, 
+2. Interger: 0, 
+
+
+
 1. Backtracking
 https://en.wikipedia.org/wiki/Backtracking
 
