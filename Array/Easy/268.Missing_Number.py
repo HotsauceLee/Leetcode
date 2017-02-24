@@ -23,3 +23,18 @@ class Solution(object):
 # ============= XOR ==================
 # Time: O(n)
 # Spcee: O(1)
+class Solution(object):
+    def missingNumber(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        if not nums:
+            return 0
+
+        nums += [0] 
+        result = 0 
+        for idx, val in enumerate(nums):
+            result = result ^ idx ^ val 
+
+        return result
