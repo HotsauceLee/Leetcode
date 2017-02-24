@@ -38,3 +38,21 @@ class Solution(object):
             result = result ^ idx ^ val 
 
         return result
+    
+# ============= sum ================
+# Time: O(n)
+# Space: O(1)
+class Solution(object):
+    def missingNumber(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        if not nums:
+            return 0
+
+        real_sum = len(nums)*(len(nums)+1)/2
+        for n in nums:
+            real_sum -= n
+
+        return real_sum
