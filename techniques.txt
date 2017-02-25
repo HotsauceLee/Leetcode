@@ -1,5 +1,5 @@
 Questions when giving arguments:
-1. List: NUll, empty, duplicates, 
+1. List: NUll, empty, duplicates, sorted, 
 2. Interger: 0, 
 
 
