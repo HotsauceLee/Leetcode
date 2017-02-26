@@ -1,6 +1,6 @@
 Questions when giving arguments:
 1. List: NUll, empty, duplicates, sorted, 
-2. Interger: 0, 
+2. Interger: null, 0, overflow
 
 
 
