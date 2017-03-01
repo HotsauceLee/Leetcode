@@ -12,6 +12,7 @@ https://en.wikipedia.org/wiki/Boyer%E2%80%93Moore_majority_vote_algorithm
 https://gregable.com/2013/10/majority-vote-algorithm-find-majority.html
 
 3. Using array value as index
+  When all values in the array is between range [0, len(array)], could use value as idx to solve problems.
 
 4. BST find previous/next predcessor/successor
 
