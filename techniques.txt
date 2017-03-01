@@ -20,4 +20,6 @@ https://gregable.com/2013/10/majority-vote-algorithm-find-majority.html
 
 6. KMP substring index
 
+7. Linked list use Speed(fast) = Speed(slow) * 2 could find mid point and find loops.
+
 
