@@ -1,6 +1,9 @@
 # ============= Custom Comparator =============
 # Time: O(nlog(n) + n)
 # Space: O(n)
+# NOTICE: If required closest to a certain target,
+# updating min while doing binary search after 
+# sorting, nlog(n).
 class Node(object):
     def __init__(self, index=None, sum=None):
         self.index = index
@@ -31,6 +34,7 @@ class Solution:
         
         result = []
         min_sub = float('inf')
+        # Do binary search if require closest to a target
         for i in xrange(1, len(sum_array)):
             cur_sub = abs(sum_array[i].sum - sum_array[i - 1].sum)
             if cur_sub < min_sub:
