@@ -1,5 +1,5 @@
-# =========== Use array value as index(changed array value, not allowed!) =============
-# Time: O(n)
+# =========== Binary search ==============:
+# Time: O(nlog(n))
 # Space: O(1)
 class Solution(object):
     def findDuplicate(self, nums):
@@ -10,12 +10,30 @@ class Solution(object):
         if not nums:
             return 0
             
-        for i in xrange(len(nums)):
-            idx = abs(nums[i]) - 1
-            if nums[idx] < 0:
-                return abs(nums[i])
-            nums[idx] = -nums[idx]
+        lens = len(nums)
+        if lens <= 1:
+            return 0
+            
+        begin, end = 1, lens - 1
+        while begin < end:
+            mid = (begin + end)/2
+            count = self.count_less_or_equal(mid, nums)
+            
+            if count <= mid:
+                begin = mid + 1
+            else:
+                end = mid
+                
+        return begin
+        
+    def count_less_or_equal(self, target, nums):
+        counter = 0
+        for n in nums:
+            if n <= target:
+                counter += 1
+                
+        return counter
 
-# =========== Binary search ==============:
-# Time: O(nlog(n))
+# =========== Find the entry point of the loop ============
+# Time: O(n)
 # Space: O(1)
