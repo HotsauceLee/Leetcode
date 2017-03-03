@@ -1,6 +1,7 @@
 # ============ Back tracking + DP palindrome ============
 # Time:
 # Space:
+# NOTICE: DP palindrome is the most important part!!!!!
 class Solution:
     # @param s, a string
     # @return a list of lists of string
