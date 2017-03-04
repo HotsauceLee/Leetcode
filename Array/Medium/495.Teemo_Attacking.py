@@ -16,13 +16,14 @@ class Solution(object):
             return 0
 
         result = duration
-        start, end = timeSeries[0], timeSeries[0] + duration
+        end = timeSeries[0] + duration
         for t in xrange(1, len(timeSeries)):
             if timeSeries[t] <= end:
                 result += timeSeries[t] + duration - end
-                end = timeSeries[t] + duration
             else:
                 result += duration
-                start, end = timeSeries[t], timeSeries[t] + duration
+            end = timeSeries[t] + duration
                  
         return result
+    
+# ============ Better =============
