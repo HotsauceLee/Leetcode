@@ -1,4 +1,10 @@
 Questions when giving arguments:
+
+About program:
+1. is the input small enough to fit in to ram?
+2. what if multithreading?
+
+About input:
 1. List: NUll, empty, duplicates, sorted, 
 2. Interger: null, 0, overflow
 3. String: null, empty, number/alphabit/symbol, space
