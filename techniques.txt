@@ -1,7 +1,7 @@
 Questions when giving arguments:
 1. List: NUll, empty, duplicates, sorted, 
 2. Interger: null, 0, overflow
-
+3. String: null, empty, number/alphabit/symbol, space
 
 
 1. Backtracking
@@ -22,4 +22,4 @@ https://gregable.com/2013/10/majority-vote-algorithm-find-majority.html
 
 7. Linked list use Speed(fast) = Speed(slow) * 2 could find mid point and find loops.
 
-
+8. two passes: first pass select a candidate, second pass check if it is legit.
