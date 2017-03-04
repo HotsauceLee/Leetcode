@@ -1,6 +1,7 @@
 # =========== Sort ============
 # Time: O(nlog(n) + n)
 # Space: O(1)
+
 # Definition for an interval.
 # class Interval(object):
 #     def __init__(self, s=0, e=0):
@@ -34,5 +35,26 @@ class Solution(object):
                 max_end = max(max_end, intervals[i].end)
             result.append(Interval(min_start, max_end))
             i += 1
+            
+        return result
+
+# ============ Better =============
+class Solution(object):
+    def merge(self, intervals):
+        """
+        :type intervals: List[Interval]
+        :rtype: List[Interval]
+        """
+        def interval_cmp(i1, i2):
+            if i1.start != i2.start:
+                return i1.start - i2.start
+            return i1.end - i2.end
+            
+        result = []
+        for i in sorted(intervals, cmp=interval_cmp):
+            if result and result[-1].end >= i.start:
+                result[-1].end = max(result[-1].end, i.end)
+            else:
+                result.append(i)
             
         return result
