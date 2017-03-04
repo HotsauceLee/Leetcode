@@ -21,58 +21,31 @@ class Solution(object):
         for r in xrange(self.len_row):
             for c in xrange(self.len_col):
                 if board[r][c] == word[0]:
-                    if len(word) == 1:
+                    char_save = board[r][c]
+                    board[r][c] = '#'
+                    if self.__dfs(board, r, c, 1, word):
                         return True
-                    visited = [[False]*self.len_col for i in xrange(self.len_row)]
-                    visited[r][c] = True
-                    if self.__dfs(visited, board, r, c, 1, word):
-                        return True
+                    board[r][c] = char_save
                     
         return False
         
-    def __dfs(self, visited, board, cur_row, cur_col, cur_char, word):
+    def __dfs(self, board, cur_row, cur_col, cur_char, word):
         if cur_char == len(word):
             return True
             
         for i in xrange(4):
             next_row = cur_row + self.delta_row[i]
             next_col = cur_col + self.delta_col[i]
-            if (self.__inbound(next_row, next_col, len(board) - 1, len(board[0]) - 1)
-                    and not visited[next_row][next_col]
-                    and board[next_row][next_col] == word[cur_char]):
-                visited[next_row][next_col] = True
-                if self.__dfs(visited, board, next_row, next_col, cur_char + 1, word):
+            if (self.__inbound(next_row, next_col) and board[next_row][next_col] == word[cur_char]):
+                char_save = board[next_row][next_col]
+                board[next_row][next_col] = '#'
+                if self.__dfs(board, next_row, next_col, cur_char + 1, word):
                     return True
-                visited[next_row][next_col] = False
-    
-    # Won't work
-    def __bfs(self, board, row, col, word):
-        
-        visited = [[False]*len(board[0]) for i in xrange(len(board))]
-        visited[row][col] = True
-        next_char = 1
-        q = collections.deque([(row, col)])
-        while len(q):
-            cur_level = len(q)
-            for i in xrange(cur_level):
-                cur_row, cur_col = q.pop()
-                for i in xrange(4):
-                    next_row = cur_row + self.delta_row[i]
-                    next_col = cur_col + self.delta_col[i]
-                    if (self.__inbound(next_row, next_col, len(board) - 1, len(board[0]) - 1)
-                            and not visited[next_row][next_col]
-                            and board[next_row][next_col] == word[next_char]):
-                        if next_char == len(word) - 1:
-                            return True
-                        q.appendleft((next_row, next_col))
-                        visited[next_row][next_col] = True
-            next_char += 1
-            if next_char >= len(word):
-                break
-                    
-        return False
+                board[next_row][next_col] = char_save
+
+    def __inbound(self, row, col):
+        return 0 <= row < self.len_row and 0 <= col < self.len_col
             
-    def __inbound(self, row, col, max_row, max_col):
-        return 0 <= row <= max_row and 0 <= col <= max_col
+        
             
         
