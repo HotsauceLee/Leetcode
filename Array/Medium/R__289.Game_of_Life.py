@@ -46,5 +46,12 @@ class Solution(object):
 
 """
 Solution:
+Go through all the cells in the board, increase the live neighbor count if the current cell is live.
 
+Not really keen on doing it in Java. What I do is I have the coordinates of all living cells in a set.
+Then I count the living neighbors of all cells by going through the living cells and increasing the 
+counter of their neighbors (thus cells without living neighbor will not be in the counter). 
+Afterwards I just collect the new set of living cells by picking those with the right amount of neighbors.
+
+https://discuss.leetcode.com/topic/26236/infinite-board-solution
 """
