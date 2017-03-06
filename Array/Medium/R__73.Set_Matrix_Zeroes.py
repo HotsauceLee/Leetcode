@@ -32,4 +32,34 @@ class Solution(object):
                     matrix[row][col] = 0
                     
                     
-# ================ 
+# ================ Use first row and col to store the state of that row or col
+# Time: O(mn)
+# Space: O(1)
+class Solution(object):
+    def setZeroes(self, matrix):
+        """
+        :type matrix: List[List[int]]
+        :rtype: void Do not return anything, modify matrix in-place instead.
+        """
+        if not matrix or not matrix[0]:
+            return
+        
+        col0, len_row, len_col = matrix[0][0], len(matrix), len(matrix[0])
+        for row in xrange(len_row):
+            if matrix[row][0] == 0:
+                col0 = 0
+            for col in xrange(1, len_col):
+                if matrix[row][col] == 0:
+                    matrix[row][0] = matrix[0][col] = 0
+                    
+        for row in xrange(1, len_row):
+            for col in xrange(1, len_col):
+                if matrix[row][0] == 0 or matrix[0][col] == 0:
+                    matrix[row][col] = 0
+                    
+        if matrix[0][0] == 0:
+            for col in xrange(len_col):
+                matrix[0][col] = 0
+        if col0 == 0:
+            for row in xrange(len_row):
+                matrix[row][0] = 0
