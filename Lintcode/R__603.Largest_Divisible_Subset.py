@@ -1,3 +1,16 @@
+"""
+Given a set of distinct positive integers, find the largest subset such that every pair (Si, Sj) of elements in this subset satisfies: Si % Sj = 0 or Sj % Si = 0.
+
+ Notice
+
+If there are multiple solutions, return any subset is fine.
+
+Have you met this question in a real interview? Yes
+Example
+Given nums = [1,2,3], return [1,2] or [1,3]
+
+Given nums = [1,2,4,8], return [1,2,4,8]
+"""
 # ============ DP =============
 # Time: O(n^2)
 # Space: O(2n)
