@@ -1,3 +1,14 @@
+"""
+Given an array nums of n integers, find two integers in nums such that the sum is closest to a given number, target.
+
+Return the difference between the sum of the two integers and the target.
+
+Have you met this question in a real interview? Yes
+Example
+Given array nums = [-1, 2, 1, -4], and target = 4.
+
+The minimum difference is 1. (4 - (2 + 1) = 1).
+"""
 # =========== Left and right pointers ==========
 # Time: O(n)
 # Space: O(1)
