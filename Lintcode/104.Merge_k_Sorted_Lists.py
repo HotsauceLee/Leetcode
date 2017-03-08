@@ -1,3 +1,19 @@
+"""
+Merge k sorted linked lists and return it as one sorted list.
+
+Analyze and describe its complexity.
+
+Have you met this question in a real interview? Yes
+Example
+Given lists:
+
+[
+  2->4->null,
+  null,
+  -1->null
+],
+return -1->2->4->null.
+"""
 # ============= Heap + Custom Object ================
 # Time: O(Nlog(N) + N) N = all nodes
 # Space: O(1)
