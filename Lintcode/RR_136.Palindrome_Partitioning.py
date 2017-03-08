@@ -1,3 +1,17 @@
+"""
+Given a string s, partition s such that every substring of the partition is a palindrome.
+
+Return all possible palindrome partitioning of s.
+
+Have you met this question in a real interview? Yes
+Example
+Given s = "aab", return:
+
+[
+  ["aa","b"],
+  ["a","a","b"]
+]
+"""
 # ============ Back tracking + DP palindrome ============
 # Time:
 # Space:
