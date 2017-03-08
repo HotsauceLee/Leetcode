@@ -3,6 +3,7 @@ Questions when giving arguments:
 About program:
 1. is the input small enough to fit in to ram?
 2. what if multithreading?
+3. when design data structure, think about trade off between operations.
 
 About input:
 1. List: NUll, empty, duplicates, sorted, 
@@ -31,3 +32,4 @@ https://gregable.com/2013/10/majority-vote-algorithm-find-majority.html
 8. two passes: first pass select a candidate, second pass check if it is legit.
 
 9. binary search either begin + 1< end or begin < end begin = mid + 1 could avoid infinite loop
+
