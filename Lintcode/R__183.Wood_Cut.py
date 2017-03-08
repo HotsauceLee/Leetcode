@@ -1,3 +1,16 @@
+"""
+Given n pieces of wood with length L[i] (integer array). Cut them into small pieces to guarantee you could have equal or more than k pieces with the same length. What is the longest length you can get from the n pieces of wood? Given L & k, return the maximum length of the small pieces.
+
+ Notice
+
+You couldn't cut wood into float length.
+
+If you couldn't get >= k pieces, return 0.
+
+Have you met this question in a real interview? Yes
+Example
+For L=[232, 124, 456], k=7, return 114.
+"""
 # ============== Binary Search =================
 # Time: O(nlog(n))
 # Space: O(1)
