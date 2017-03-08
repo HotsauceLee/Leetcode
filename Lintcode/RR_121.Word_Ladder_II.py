@@ -1,3 +1,24 @@
+"""
+Given two words (start and end), and a dictionary, find all shortest transformation sequence(s) from start to end, such that:
+
+Only one letter can be changed at a time
+Each intermediate word must exist in the dictionary
+ Notice
+
+All words have the same length.
+All words contain only lowercase alphabetic characters.
+Have you met this question in a real interview? Yes
+Example
+Given:
+start = "hit"
+end = "cog"
+dict = ["hot","dot","dog","lot","log"]
+Return
+  [
+    ["hit","hot","dot","dog","cog"],
+    ["hit","hot","lot","log","cog"]
+  ]
+"""
 # ============ BFS + DFS ==============
 class Solution(object):
 	def findLadders(self, start, end, dict):
