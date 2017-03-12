@@ -10,6 +10,7 @@ About input:
 2. Interger: null, 0, overflow
 3. String: null, empty, number/alphabit/symbol, space
 
+没思路时用数据走一遍就有头绪了
 
 1. Backtracking
 https://en.wikipedia.org/wiki/Backtracking
