@@ -1,5 +1,5 @@
 # =========== Binary Search ============
-# Time: m*n*log(m*n)
+# Time: n*log(n)*log(lo-hi)
 # Space: O(1)
 # Trap: mid might not in matrix
 class Solution(object):
@@ -19,6 +19,7 @@ class Solution(object):
             return matrix[-1][-1]
             
         lo, hi = matrix[0][0], matrix[-1][-1]
+        # log(lo-hi)
         while lo < hi:
             mid = (lo + hi)/2
             # if count(n <= mid) == k, then mid could be the result
@@ -26,9 +27,11 @@ class Solution(object):
             # moving to find the smallest that =count(n <= mid) == k.
             # For instance: 14 in [[1,5,9],[10,11,13],[12,13,15]]
             smaller_or_equals_than_mid = 0
+            # O(n)
             for row in xrange(len_row):
                 col = 0
                 count = 0
+                # log(len_col), in this problem len_col == len_row == n
                 while col < len_col and matrix[row][col] <= mid:
                     col += 1
                     smaller_or_equals_than_mid += 1
