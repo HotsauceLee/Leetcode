@@ -37,3 +37,5 @@ https://gregable.com/2013/10/majority-vote-algorithm-find-majority.html
 
 10. When solving string problems and requires hashmap, could use a XX[256] array if all chars are ASCII
 
+11. when doing level or weight, keep adding the previous ones could achieve reverse level or weight sum.
+
