@@ -1,3 +1,11 @@
+"""
+Find K-th largest element in N arrays.
+
+ Notice
+
+You can swap elements in the array
+"""
+
 # =========== heap ===========
 # Time: O(nlog(k))
 # Space: O(k)
