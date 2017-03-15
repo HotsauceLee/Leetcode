@@ -39,3 +39,28 @@ class Solution(object):
                 slow += 1
                 
         return longest
+    
+# ========= Without deleting from dict ============
+# Time: O(n)
+# Space: O(n)
+class Solution(object):
+    def lengthOfLongestSubstring(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        if not s:
+            return 0
+        if len(s) == 1:
+            return 1
+            
+        slow, longest = 0, float('-inf')
+        d = {}
+        for fast in xrange(len(s)):
+            cur_char = s[fast]
+            if cur_char in d:
+                slow = max(slow, d[cur_char] + 1)
+            longest = max(longest, fast - slow + 1)
+            d[cur_char] = fast
+
+        return longest
