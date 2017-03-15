@@ -12,7 +12,16 @@ class Solution(object):
         while fast < len(nums):
             cur_sum += nums[fast]
             fast += 1
+            # when cur_sum < s, prev has already passed valid range,
+            # but if we keep it at the last valid point, when plusing
+            # the next one, it must still be valid, better off go one
+            # step further let cur_sum build up again then start taking
+            # prev off.
             while cur_sum >= s:
+                # reason why fast - slow instead of fast - slow + 1
+                # is because fast already += 1 up there
+                # better: for fast in xrange(len(nums)) and use
+                # fast - slow + 1
                 min_dist = min(min_dist, fast - slow)
                 cur_sum -= nums[slow]
                 slow += 1
