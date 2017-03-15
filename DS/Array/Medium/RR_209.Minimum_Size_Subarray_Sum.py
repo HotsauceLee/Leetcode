@@ -17,6 +17,8 @@ class Solution(object):
             # the next one, it must still be valid, better off go one
             # step further let cur_sum build up again then start taking
             # prev off.
+
+            # In another way, if we keep the last valid point, if after plusing the next one still valid after minusing prev, it updates max twice. If we dont keep theast valid, it will update once
             while cur_sum >= s:
                 # reason why fast - slow instead of fast - slow + 1
                 # is because fast already += 1 up there
