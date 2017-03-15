@@ -39,3 +39,5 @@ https://gregable.com/2013/10/majority-vote-algorithm-find-majority.html
 
 11. when doing level or weight, keep adding the previous ones could achieve reverse level or weight sum.
 
+12. When finding kth largest/smallest, count the elements that are snaller/larger than k could work
+
