@@ -34,7 +34,8 @@ class Solution(object):
 
         return end 
     
-# ============= Cleaner version ==============
+# ============= Cleaner version =============
+# trap: right = len(nums)
 class Solution(object):
     def searchInsert(self, nums, target):
         """
