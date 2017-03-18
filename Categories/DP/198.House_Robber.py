@@ -9,7 +9,7 @@ Special thanks to @ifanchu for adding this problem and creating all test cases. 
 
 # ============ DP =============
 # Time: O(n)
-# Space: O(n)
+# Space: O(1)
 class Solution(object):
     def rob(self, nums):
         """
@@ -18,10 +18,11 @@ class Solution(object):
         """
         if not nums:
             return 0
+        if len(nums) == 1:
+            return nums[0]
+        
+        nums[1] = max(nums[1], nums[0])
+        for i in xrange(2, len(nums)):
+            nums[i] = max((nums[i - 2] + nums[i]), nums[i - 1])
             
-        dp = [[0,0] for i in xrange(len(nums) + 1)]
-        for i in xrange(1, len(nums) + 1):
-            dp[i][0] = max(dp[i-1][0], dp[i-1][1])
-            dp[i][1] = dp[i-1][0] + nums[i-1]
-            
-        return max(dp[-1][0], dp[-1][1])
+        return nums[-1]
