@@ -22,7 +22,7 @@ Return {A,B,D}, {C,E}. Since there are two connected component which is {A,B,D},
 """
 
 # ================ BFS ==================
-# Time: O(n^2 + n). n-total # of nodes
+# Time: O(n^2 + n + nlog(n)). n-total # of nodes
 # Space: O(n + n)
 # Definition for a undirected graph node
 # class UndirectedGraphNode:
