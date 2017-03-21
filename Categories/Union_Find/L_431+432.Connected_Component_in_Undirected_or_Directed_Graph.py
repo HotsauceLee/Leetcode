@@ -1,3 +1,45 @@
+"""
+Find the number connected component in the undirected graph. Each node in the graph contains a label and a list of its neighbors. (a connected component (or just component) of an undirected graph is a subgraph in which any two vertices are connected to each other by paths, and which is connected to no additional vertices in the supergraph.)
+
+ Notice
+
+Each connected component should sort by label.
+
+Have you met this question in a real interview? Yes
+Clarification
+Learn more about representation of graphs
+
+Example
+Given graph:
+
+A------B  C
+ \     |  | 
+  \    |  |
+   \   |  |
+    \  |  |
+      D   E
+Return {A,B,D}, {C,E}. Since there are two connected component which is {A,B,D}, {C,E}
+
+
+Find the number Weak Connected Component in the directed graph. Each node in the graph contains a label and a list of its neighbors. (a connected set of a directed graph is a subgraph in which any two vertices are connected by direct edge path.)
+
+ Notice
+
+Sort the element in the set in increasing order
+
+Have you met this question in a real interview? Yes
+Example
+Given graph:
+
+A----->B  C
+ \     |  | 
+  \    |  |
+   \   |  |
+    \  v  v
+     ->D  E <- F
+Return {A,B,D}, {C,E,F}. Since there are two connected component which are {A,B,D} and {C,E,F}
+"""
+
 # ============== Union Find ==============
 # Time: O(n^2 + n + n^2 + nlogn). n - total # of nodes
 # Space: O(2n(uf) + n(node set))
