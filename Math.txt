@@ -6,7 +6,8 @@ C(k, s) = s!/(s - k)!*k!
 62.Unique_Paths： m-1 item 1, n-1 item 2. how many different combinations?
 C(m-1, (m-1+n-1)) = C(n-1, (m-1+n-1))
 
-
+how many unique pairs in a n set? n(n-1)/2. select the first from n, the second from n - 1
+but every pair was counted twice, so /2.
 
 2. Permutation
 
