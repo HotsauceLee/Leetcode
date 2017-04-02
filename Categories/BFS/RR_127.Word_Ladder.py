@@ -75,3 +75,45 @@ class Solution(object):
                         
         return 0
         
+# =============== two end bfs ===================
+class Solution(object):
+    def ladderLength(self, beginWord, endWord, wordList):
+        """
+        :type beginWord: str
+        :type endWord: str
+        :type wordList: List[str]
+        :rtype: int
+        """
+        if not wordList:
+            return 0
+        d = set(wordList)
+        if endWord not in d:
+            return 0
+            
+        begin = set([beginWord])
+        end = set([endWord])
+        visited = set([beginWord, endWord])
+        level = 1
+        while len(begin) > 0 and len(end) > 0:
+            if len(begin) > len(end):
+                begin, end = end, begin
+                
+            tmp = set()
+            for w in begin:
+                for c in xrange(len(w)):
+                    for next_c in xrange(ord('a'), ord('z') + 1):
+                        next_char = chr(next_c)
+                        if next_char == w[c]:
+                            continue
+
+                        next_word = w[:c] + next_char + w[c+1:]
+                        if next_word in end:
+                            return level + 1
+                        if next_word in d and next_word not in visited:
+                            tmp.add(next_word)
+                            visited.add(next_word)
+                            
+            begin = tmp
+            level += 1
+            
+        return 0
