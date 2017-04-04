@@ -53,3 +53,5 @@ https://gregable.com/2013/10/majority-vote-algorithm-find-majority.html
 
 12. When finding kth largest/smallest, count the elements that are snaller/larger than k could work
 
+13. binary right set to len(nums) could go one more to the end if not found
+
