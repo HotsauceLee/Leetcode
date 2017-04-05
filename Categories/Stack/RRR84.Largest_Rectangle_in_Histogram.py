@@ -34,7 +34,8 @@ class Solution(object):
         heights += [0]
         stack, result = [], 0
         for i in xrange(len(heights)):
-            while stack and heights[i] <= heights[stack[-1]]:
+            # no equals here since width does't stops on equals.
+            while stack and heights[i] < heights[stack[-1]]:
                 last = stack.pop()
                 width = i - stack[-1] - 1 if stack else i
                 result = max(result, width*heights[last])
