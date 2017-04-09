@@ -50,3 +50,38 @@ class Solution:
                 max_area = max(max_area, matrix[row][col]**2)
 
         return max_area
+    
+#============== Cleaner ==============
+# Time: O(m*n)
+# Space: O(1)
+class Solution:
+    #param matrix: a matrix of 0 and 1
+    #return: an integer
+    def maxSquare(self, matrix):
+        # write your code here
+        if not matrix:
+            return 0
+
+        len_row, len_col = len(matrix), len(matrix[0])
+        if len_row < 1 or len_col < 1:
+            return 0
+
+        def inbound(r, c):
+            return 0 <= r < len_row and 0 <= c < len_col
+
+        max_area = 0
+        for row in xrange(len_row):
+            for col in xrange(len_col):
+                if matrix[row][col] == 0:
+                    continue
+
+                if inbound(row - 1, col - 1):
+                    matrix[row][col] = min(matrix[row - 1][col - 1],
+                                           min(matrix[row - 1][col], matrix[row][col - 1])
+                                            ) + 1
+                else:
+                    matrix[row][col] = 1
+
+                max_area = max(max_area, matrix[row][col]**2)
+
+        return max_area
