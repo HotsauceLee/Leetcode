@@ -16,7 +16,7 @@ return 25
 """
 
 # ============= Memorized Backtracking ===========
-# Time: ?
+# Time: O(m*n*m*n)
 # Space: O(m*n)
 class Solution:
     # @param {int[][]} A an integer matrix
