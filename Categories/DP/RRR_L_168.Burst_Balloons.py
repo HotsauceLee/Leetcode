@@ -60,5 +60,37 @@ class Solution(object):
             
         dp[left - 1][right - 1] = cur_max
         return cur_max
+    
+    
+# =============== Loops DP ==============
+# Time: O(n^3)
+# Space: O(n + n^2)
+class Solution(object):
+    """
+    @param {int[]} nums a list of integer
+    @return {int} an integer, maximum coins
+    """
+    def maxCoins(self, nums):
+        # Write your code here
+        if not nums:
+            return 0
+        
+        lens = len(nums)
+        nums_with_walls = [1] + nums + [1]
+        
+        dp = [[0]*(lens + 2) for i in xrange(lens + 2)]
+        
+        # window size
+        for dist in xrange(1, lens + 1):
+            # move window from left to right
+            for left in xrange(1, lens - dist + 2):
+                right = left + dist - 1
+                # iterate inside the window to get the
+                # max points of the current window
+                for i in xrange(left, right + 1):
+                    cur_points = nums_with_walls[left - 1]*nums_with_walls[i]*nums_with_walls[right + 1]
+                    dp[left][right] = max(dp[left][right], cur_points + dp[left][i - 1] + dp[i + 1][right])
+                    
+        return dp[1][lens]
         
         
