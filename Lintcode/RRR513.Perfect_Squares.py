@@ -28,6 +28,7 @@ class Solution:
         for i in xrange(1, len(dp)):
             j = 1 
             while j**2 <= i:
+                # dp[i - j**2] + 1 = dp[i - j**2] + dp[j**2]
                 dp[i] = min(dp[i], dp[i - j**2] + 1)
                 j += 1
 
