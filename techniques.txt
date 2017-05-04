@@ -55,3 +55,8 @@ https://gregable.com/2013/10/majority-vote-algorithm-find-majority.html
 
 13. binary right set to len(nums) could go one more to the end if not found
 
+14. 拆环：
+  (1) 切分
+  (2) double
+  (3) 取反(find max-> find min)
+
