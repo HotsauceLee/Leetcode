@@ -14,6 +14,23 @@ Given word1 = "mart" and word2 = "karma", return 3.
 # ================ DP =================
 # Time: O(len(word1) + len(word1)*len(word2))
 # Space: O(len(word1))
+# Idea:
+"""
+ replace | insert
+  ----------------
+  delete | now
+  
+if word1[i] == word2[j]:
+    # no need to care about the current char
+    # equals word1[i - 1] => word2[j - 1]
+    dp[i][j] = dp[i-1][j-1]
+else:
+    # min among:
+    #   delete: word1[i] => word2[j - 1],  plus the delete(1)
+    #   insert: word1[i - 1] => word2[j], plus the insert(1)
+    #   replace: word1[i - 1] => word2[j - 1], plus the replace(1)
+    dp[i][j] = min((dp[i][j-1], dp[i-1][j]), dp[i-1][j-1]) + 1
+"""
 class Solution(object):
     def minDistance(self, word1, word2):
         """
