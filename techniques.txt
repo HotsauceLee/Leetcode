@@ -57,6 +57,6 @@ https://gregable.com/2013/10/majority-vote-algorithm-find-majority.html
 
 14. 拆环：
   (1) 切分
-  (2) double
-  (3) 取反(find max-> find min)
+  (2) double L.593
+  (3) 取反(find max-> find min) L.403
 
