@@ -59,4 +59,6 @@ https://gregable.com/2013/10/majority-vote-algorithm-find-majority.html
   (1) 切分
   (2) double L.593
   (3) 取反(find max-> find min) L.403
+  
+15. when thinking O(n), it could be multiple passes, not necessariely just one pass.
 
