@@ -14,7 +14,7 @@ If there are multiple such windows, you are guaranteed that there will always be
 
 # ============ Moving window ===========
 # Time: O(n)
-# Space: O(4*len(t))
+# Space: O(len(t) + len(s))
 class Solution(object):
     def minWindow(self, s, t):
         """
@@ -26,17 +26,15 @@ class Solution(object):
             return ""
         
         pool = {}
-        pool_set = set()
+        char_count = len(t)
         for c in t:
             if c in pool:
                 pool[c] += 1
             else:
                 pool[c] = 1
-                pool_set.add(c)
 
         result = ""
         q = collections.deque()
-        d = {}
         for i in xrange(len(s)):
             cur_char = s[i]
             # don't care the chars not in t
@@ -47,23 +45,18 @@ class Solution(object):
             q.append((cur_char, i))
 
             # Plus 1 on the char
-            if cur_char in d:
-                d[cur_char] += 1
-            else:
-                d[cur_char] = 1
-                
-            # remove char from pool_set if already met the count
-            if d[cur_char] >= pool[cur_char] and cur_char in pool_set:
-                pool_set.remove(cur_char)
+            if pool[cur_char] > 0:
+                char_count -= 1
+            pool[cur_char] -= 1
             
             # Check if has all chars in t
             # if not, continue
-            if pool_set:
+            if char_count != 0:
                 continue
             
             # if has met all chars, check if we can kick out previous ones
-            while d[q[0][0]] - 1 >= pool[q[0][0]]:
-                d[q[0][0]] -= 1
+            while pool[q[0][0]] < 0:
+                pool[q[0][0]] += 1
                 q.popleft()
                 
             # update result
@@ -71,5 +64,3 @@ class Solution(object):
                 result = s[q[0][1]:q[-1][1] + 1]
                 
         return result
-                
-        
