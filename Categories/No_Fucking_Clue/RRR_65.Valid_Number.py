@@ -56,6 +56,7 @@ class Solution(object):
         """
         if not s:
             return False
+        # get rid of leading and tailing spaces
         s = s.strip()
         if not s:
             return False
@@ -67,20 +68,27 @@ class Solution(object):
         for idx, c in enumerate(s):
             if c.isdigit():
                 number_seen = True
+                # this will be set false when see e
+                # and will be set to true if there are digits after e
                 number_after_e = True
+            # if already seen e or dot, false
             elif c == '.':
                 if e_seen or dot_seen:
                     return False
                 dot_seen = True
+            # if if already seen e or haven't seen digits, false
             elif c == 'e':
                 if e_seen or not number_seen:
                     return False
                 e_seen = True
+                # if no digits after e, false
                 number_after_e = False
+            # - and + could only appear at the first char or first after e
             elif c == '-' or c == '+':
                 if idx != 0 and s[idx - 1] != 'e':
                     return False
+            # all other chars are false
             else:
                 return False
-                
+        # only seen digits and seen digits after e(if e exist)
         return number_seen and number_after_e
