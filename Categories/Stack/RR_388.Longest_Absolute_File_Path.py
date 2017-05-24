@@ -64,3 +64,31 @@ class Solution(object):
                 
         return result
                 
+
+# =============== Refined =================
+class Solution(object):
+    def lengthLongestPath(self, input):
+        """
+        :type input: str
+        :rtype: int
+        """
+        if not input:
+            return 0
+        
+        stack, result = [0], 0
+        for l in input.splitlines():
+            cur_string = l.lstrip('\t')
+            cur_level = len(l) - len(cur_string)
+            # level 0: dir - [0, 3]
+            # level 1: dir/subdir1 - [0, 3, 10]
+            while len(stack) - 2 >= cur_level:
+                popped_str = stack.pop()
+            
+            # Stack store the total string len in current level
+            stack.append(len(cur_string) + stack[-1])
+            if '.' in cur_string:
+                # cur total len = cur string len(stack[-1]) + # of slashs(cur_level)
+                result = max(result, stack[-1] + cur_level)
+                
+        return result
+                
