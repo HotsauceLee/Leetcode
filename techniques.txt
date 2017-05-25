@@ -3,7 +3,7 @@ Questions when giving arguments:
 About program:
 1. is the input small enough to fit in to ram?
 2. what if multithreading?
-3. when design data structure, think about trade off between operations.
+3. when design data structure, think about trade off between operations, and how often each method gets called
 
 About input:
 1. List: NUll, empty, duplicates, sorted, 
