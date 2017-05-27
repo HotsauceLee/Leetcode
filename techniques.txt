@@ -62,3 +62,5 @@ https://gregable.com/2013/10/majority-vote-algorithm-find-majority.html
   
 15. when thinking O(n), it could be multiple passes, not necessariely just one pass.
 
+16. Static DP could save tons of time if the same instance are called repeatedly
+
