@@ -83,3 +83,79 @@ class Solution:
             result.append(uf.query())
             
         return result
+
+# ============ better =============
+# Time: O(k)
+# Space: O(k)
+class UnionFind(object):
+    # O(1)
+    def __init__(self):
+        self.fathers = {}
+        self.count = 0
+     
+    # O(1)  
+    def add(self, n):
+        self.fathers[n] = n
+        self.count += 1
+    
+    # Amortized O(1)
+    def find(self, n):
+        if self.fathers[n] == n:
+            return n
+            
+        f = self.find(self.fathers[n])
+        self.fathers[n] = f
+        return f
+    
+    # Amortized O(1)
+    def union(self, n1, n2):
+        f1 = self.find(n1)
+        f2 = self.find(n2)
+        if f1 != f2:
+            # !!!
+            self.fathers[f2] = f1
+            self.count -= 1
+    
+    # O(1)
+    def total_count(self):
+        return self.count
+
+class Solution(object):
+    def numIslands2(self, m, n, positions):
+        """
+        :type m: int
+        :type n: int
+        :type positions: List[List[int]]
+        :rtype: List[int]
+        """
+        if m <= 0 or n <= 0 or not positions:
+            return 0
+        
+        d = set()
+        uf = UnionFind()
+        delta_row = [1, -1, 0, 0]
+        delta_col = [0, 0, 1, -1]
+        
+        def within(row, col):
+            return 0 <= row < m and 0 <= col < n
+
+        result = []
+        # O(k)
+        for p in positions:
+            cur_row = p[0]
+            cur_col = p[1]
+            cur_1d = cur_row*n + cur_col
+            if within(cur_row, cur_col) and cur_1d not in d:
+                d.add(cur_1d)
+                uf.add(cur_1d)
+                # O(4)
+                for i in xrange(len(delta_row)):
+                    next_row = cur_row + delta_row[i]
+                    next_col = cur_col + delta_col[i]
+                    next_1d = next_row*n + next_col
+                    if within(next_row, next_col) and next_1d in d:
+                        uf.union(cur_1d, next_1d)
+            
+            result.append(uf.total_count())
+            
+        return result
