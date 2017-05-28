@@ -21,31 +21,28 @@ max_take[i][j] = max(sum[i][j] - max_take[i + 1][j], sum[i][j] - max_take[i][j -
 leave the next person the least.
 Build the dp list from smallest section(i == j) to the largest(i = 0, j = len-1)
 """
-class Solution:
-    # @param values: a list of integers
-    # @return: a boolean which equals to True if the first player will win
-    def firstWillWin(self, values):
-        # write your code here
-        if not values:
-            return 0
+class Solution(object):
+    def PredictTheWinner(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: bool
+        """
+        if not nums or len(nums) == 1:
+            return True
         
-        lens = len(values)
-        # build the sums list. O(n)
-        sums = [0]*(lens + 1)
-        for i in xrange(1, lens + 1):
-            sums[i] = sums[i - 1] + values[i - 1]
-        
-        # build the dp list. O(n)
+        lens = len(nums)
+        sums = [0]
+        for n in nums:
+            sums.append(sums[-1] + n)
+            
         dp = [[0]*lens for i in xrange(lens)]
         for i in xrange(lens):
-            dp[i][i] = values[i]
-
-        # sum[i][j] = sums[j] - sums[i - 1]
-        # O(n^2)
+            dp[i][i] = nums[i]
+            
         for l in xrange(2, lens + 1):
-            for i in xrange(0, lens - l + 1):
-                j = i + l - 1
-                s = sums[j + 1] - sums[i]
-                dp[i][j] = max(s - dp[i + 1][j], s - dp[i][j - 1])
+            for left in xrange(0, lens - l + 1):
+                right = left + l - 1
+                cur_sum = sums[right + 1] - sums[left]
+                dp[left][right] = max(cur_sum - dp[left + 1][right], cur_sum - dp[left][right - 1])
                 
-        return dp[0][-1] > sums[-1]/2
+        return dp[0][-1] >= sums[-1]/2.0
