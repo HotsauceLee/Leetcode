@@ -98,6 +98,57 @@ class MinStack(object):
         
 
 
+# ========= Single stack with min var ================
+class MinStack(object):
+
+    def __init__(self):
+        """
+        initialize your data structure here.
+        """
+        self.stack = []
+        self.cur_min = float('inf')
+        
+
+    def push(self, x):
+        """
+        :type x: int
+        :rtype: void
+        """
+        # equal is for case like 0, 1, 0
+        if x <= self.cur_min:
+            self.stack.append(self.cur_min)
+            self.cur_min = x
+        self.stack.append(x)
+        
+
+    def pop(self):
+        """
+        :rtype: void
+        """
+        if not self.stack:
+            return
+        popped = self.stack.pop()
+        if popped == self.cur_min:
+            self.cur_min = self.stack.pop()
+            
+        return popped
+        
+
+    def top(self):
+        """
+        :rtype: int
+        """
+        return self.stack[-1] if self.stack else None
+        
+
+    def getMin(self):
+        """
+        :rtype: int
+        """
+        return self.cur_min if self.cur_min < float('inf') else None
+        
+
+
 # Your MinStack object will be instantiated and called as such:
 # obj = MinStack()
 # obj.push(x)
