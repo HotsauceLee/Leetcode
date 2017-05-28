@@ -48,6 +48,7 @@ class Solution(object):
         return dp[0][-1] >= sums[-1]/2.0
 
 # ==============DP record how much more P1 could take than P2 at (i, j) ===========
+# Space: O(n^2)
 # Idea:
 """
 dp(i + 1, j) = P2(i + 1, j) - P1[(i + 2, j) or (i + 1, j - 1)]
