@@ -83,6 +83,12 @@ class Solution(object):
 """
 Only using the left and down ones.
 keep the result from previous step is enough
+
+first must win when it is even:
+Actually, this is quite straightforward. If you compute the sums of the odd elements and the even elements respectively, there will be 2 situations S_odd >= S_even or S_odd < S_even.
+All the numbers are known to both players at the beginning, the 1st player has the priority to pick and he can easily figure out which sum is bigger. If S_even >= S_odd, the 1st player can always pick the first element (0 indexed) in the array, the 2nd player, however, has NO choice but pick either side and both are even elements marked as 'O' in the original array. By repeating this process the 1st player will always win if we count tie is a win for the 1st player. Same thing if S_odd >= S_even as the first player just need to pick the last element in the array at the first move.
+0 1 2 3 ... 2n - 2 2n-1 ( 2n elements)
+E O E O ... E O
 """
 class Solution(object):
     def PredictTheWinner(self, nums):
@@ -92,8 +98,9 @@ class Solution(object):
         """
         if not nums or len(nums) == 1:
             return True
-
         lens = len(nums)
+        if lens%2 == 0:
+            return True
         dp = [0]*lens
             
         for i in xrange(lens - 1, -1, -1):
