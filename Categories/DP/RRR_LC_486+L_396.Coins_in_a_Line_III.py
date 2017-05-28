@@ -75,3 +75,29 @@ class Solution(object):
                 dp[left][right] = max(nums[left] - dp[left + 1][right], nums[right] - dp[left][right - 1])
                 
         return dp[0][-1] >= 0
+
+# ================= 1D DP ==================
+# Time: O(n^2)
+# Space: O(n)
+# Idea:
+"""
+Only using the left and down ones.
+keep the result from previous step is enough
+"""
+class Solution(object):
+    def PredictTheWinner(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: bool
+        """
+        if not nums or len(nums) == 1:
+            return True
+
+        lens = len(nums)
+        dp = [0]*lens
+            
+        for i in xrange(lens - 1, -1, -1):
+            for j in xrange(i, lens):
+                dp[j] = nums[j] if i == j else max(nums[i] - dp[j], nums[j] - dp[j - 1])
+                
+        return dp[-1] >= 0
