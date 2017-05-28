@@ -25,7 +25,10 @@ Special thanks to @stellari for adding this problem, creating these two awesome 
 # Space: O(n)
 class CriticalPoint(object):
     def __init__(self, id, a=True, x=0, h=0, p=-1):
-        self.id = id    # unique identifier
+        """
+        Need an id to pair start and end so that we know which one to delete.
+        """
+        self.id = id     # unique identifier
         self.a  = a      # active
         self.x  = x      # point
         self.h  = h      # height
@@ -78,14 +81,10 @@ class Solution(object):
             critical_points.append(CriticalPoint(id, True, b[1], -b[2]))
         
         def custom_cmp(a, b):
-            if a.x != b.x:
-                return a.x - b.x
-            # TODO: Try cmp without height
-            return a.h - b.h
+            return a.x - b.x
 
         critical_points.sort(cmp=custom_cmp)
-        print ["%s#%s" % (c.x, c.h) for c in critical_points]
-        
+
         result = []
         heap = HeapQueueWithDelete()
         prev = 0
@@ -99,14 +98,13 @@ class Solution(object):
                 # delete from heap
                 else:
                     heap.delete(cur_cp)
-                    
+                
+                # continue to push/pop the ones at same x
                 if i + 1 < len(critical_points) and cur_cp.x == critical_points[i + 1].x:
                     i += 1
                 else:
                     break
             
-            # print [str(h) for h in heap]
-            # print delete_map
             cur_max = heap.peak()
             if cur_max.h != prev:
                 result.append([cur_cp.x, cur_max.h])
