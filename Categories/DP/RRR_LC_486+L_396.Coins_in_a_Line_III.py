@@ -46,3 +46,31 @@ class Solution(object):
                 dp[left][right] = max(cur_sum - dp[left + 1][right], cur_sum - dp[left][right - 1])
                 
         return dp[0][-1] >= sums[-1]/2.0
+
+# ==============DP record how much more P1 could take than P2 at (i, j) ===========
+# Idea:
+"""
+dp(i + 1, j) = P2(i + 1, j) - P1[(i + 2, j) or (i + 1, j - 1)]
+dp(i, j) = P1(i, j) - P2
+take i: dp(i, j) = n[i] + P1[(i + 2, j) or (i + 1, j - 1)] - P2(i + 1, j) = n[i] - dp(i + 1, j)
+"""
+class Solution(object):
+    def PredictTheWinner(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: bool
+        """
+        if not nums or len(nums) == 1:
+            return True
+
+        lens = len(nums)
+        dp = [[0]*lens for i in xrange(lens)]
+        for i in xrange(lens):
+            dp[i][i] = nums[i]
+            
+        for l in xrange(2, lens + 1):
+            for left in xrange(0, lens - l + 1):
+                right = left + l - 1
+                dp[left][right] = max(nums[left] - dp[left + 1][right], nums[right] - dp[left][right - 1])
+                
+        return dp[0][-1] >= 0
