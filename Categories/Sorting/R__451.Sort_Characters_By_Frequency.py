@@ -74,3 +74,47 @@ class Solution(object):
         for n in char_list:
             result += str(n)
         return result
+
+# ============= use count map ============
+# Time: O(n)
+# Space: O(n)
+class Solution(object):
+    def frequencySort(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        if not s:
+            return ""
+            
+        d = [0]*256
+        max_count = 0
+        # O(n)
+        for c in s:
+            d[ord(c)] += 1
+            max_count = max(max_count, d[ord(c)])
+        
+        conut_map = [None]*(max_count + 1)
+        # O(n)
+        for c in s:
+            count = d[ord(c)]
+            if count == 0:
+                continue
+
+            if not conut_map[count]:
+                conut_map[count] = [c]
+            else:
+                conut_map[count].append(c)
+                
+            d[ord(c)] = 0
+        
+        result = ""
+        # O(n)
+        for i in xrange(len(conut_map) -1 , -1, -1):
+            if not conut_map[i]:
+                continue
+            
+            for cm in conut_map[i]:
+                result += cm*i
+                
+        return result
