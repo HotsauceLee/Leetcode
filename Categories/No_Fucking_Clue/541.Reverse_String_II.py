@@ -30,13 +30,15 @@ class Solution(object):
         tmp = ""
         result = ""
         for c in s:
+            # define & change current state
             if counter == 0:
                 result += tmp
                 tmp = ""
                 reversing = False
             if counter == k:
                 reversing = True
-
+            
+            # do things base on current state
             if reversing:
                 tmp = c + tmp
                 counter -= 1
@@ -44,9 +46,37 @@ class Solution(object):
                 result += c
                 counter += 1
                 
-        if tmp:
-            result += tmp
+        result += tmp
         return result
+                
+# ================ Swap ================
+# Time: O( < n)
+# Space: O(n)
+class Solution(object):
+    def reverseStr(self, s, k):
+        """
+        :type s: str
+        :type k: int
+        :rtype: str
+        """
+        if k <= 1 or not s:
+            return s
+            
+        s_list = list(s)
+        for i in xrange(0, len(s), 2*k):
+            j = min(i + k - 1, len(s) - 1)
+            self.swap(s_list, i, j)
+            
+        return ''.join(s_list)
+        
+    def swap(self, char_list, begin, end):
+        while begin < end:
+            char_list[begin], char_list[end] = char_list[end], char_list[begin]
+            begin += 1
+            end -= 1
+        
+                
+        
                 
                 
                 
