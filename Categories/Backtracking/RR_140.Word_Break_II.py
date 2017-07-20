@@ -51,3 +51,32 @@ class Solution(object):
         result = []
         dfs(s, 0, "", words_set, dp, result)
         return result
+
+# ================= bt ==================
+class Solution(object):
+    def wordBreak(self, s, wordDict):
+        """
+        :type s: str
+        :type wordDict: List[str]
+        :rtype: List[str]
+        """
+        def dfs(target, word_List, memo):
+            if not target:
+                return []
+            if target in memo:
+                return memo[target]
+            
+            result = []
+            for word in word_List:
+                if not target.startswith(word):
+                    continue
+                elif len(target) == len(word):
+                    result.append(word)
+                else:
+                    subresult = dfs(target[len(word):], word_List, memo)
+                    result += map(lambda x : word + ' ' + x , subresult)
+                    
+            memo[target] = result
+            return result
+        
+        return dfs(s, wordDict, {})
