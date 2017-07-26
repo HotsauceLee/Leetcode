@@ -38,5 +38,9 @@ class Solution(object):
             carry = a&b
             a = (a ^ b) & MASK
             b = (carry << 1) & MASK
-            
+        # ~(a ^ MASK) means the compliment of 32-bit compliment of a
+        # because python store intergers with 64 bits
+        # -2 would be 0xFFFFFFFFFFFFFFFE in 64 bit and 0xFFFFFFFE in 32 bit
+        # to get the one in 32 bits, compliment 0x00000000FFFFFFFE gets 0x0000000000000001
+        # then compliment it again gets 0xFFFFFFFFFFFFFFFE, which is -2 in python
         return a if a <= MAX else ~(a ^ MASK)
