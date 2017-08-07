@@ -64,7 +64,7 @@ class Solution(object):
 
             if top_node.left is not None and top_node.left is not last_popped and top_node.right is not last_popped:
                 stack.append(top_node.left)
-			elif top_node.right is not None and top_node.right is not last_popped:
+	    elif top_node.right is not None and top_node.right is not last_popped:
                 stack.append(top_node.right)
             else:
                 last_node = stack.pop()
