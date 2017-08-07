@@ -21,6 +21,9 @@ class Solution(object):
             elif last_node.right is not None and last_node.right is not last_popped:
                 result.append(last_node.val)
                 stack.append(last_node.right)
+	    # when last_popped.right is none, it skipped elif but the val of last_popped still needs to be recorded.
+	    # when last_popped.right is not none, that means last_node.right is last_popped, and last_node has already
+	    # been put into result, so just pop it out without doing anything.
             else:
                 last_popped = stack.pop()
                 if last_popped.right is None:
