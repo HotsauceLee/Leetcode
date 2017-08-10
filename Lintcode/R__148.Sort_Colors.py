@@ -26,6 +26,7 @@ class Solution:
             return
         
         left, right, begin = 0, len(nums) - 1, 0
+        # equals is for when there are no 2 in the list and last one is 0
         while begin <= right:
             if nums[begin] == 0:
                 nums[begin], nums[left] = nums[left], nums[begin]
