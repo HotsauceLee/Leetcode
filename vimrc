@@ -48,6 +48,9 @@ syntax on
 set tabstop=4
 set shiftwidth=4
 set smarttab
-
 set number
 set relativenumber
+
+" use j, k to select a suggestion
+inoremap <expr> j ((pumvisible())?("\<C-n>"):("j"))
+inoremap <expr> k ((pumvisible())?("\<C-p>"):("k"))
