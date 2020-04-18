@@ -5,6 +5,14 @@ class UnionFind(object):
         self.father = {}
         for n in nodes:
             self.father[n] = n
+
+    def add(self, node):
+        """
+        Add node as we go, don't need all nodes
+        during initialization.
+        """
+        if node not in self.father:
+            self.father[node] = node
         
     def find(self, node):
         if self.father[node] == node:
@@ -27,6 +35,14 @@ class UnionFind(object):
         self.father = {}
         for n in nodes:
             self.father[n] = n
+
+    def add(self, node):
+        """
+        Add node as we go, don't need all nodes
+        during initialization.
+        """
+        if node not in self.father:
+            self.father[node] = node
         
     def find(self, node):
         if self.father[node] == node:
@@ -59,6 +75,15 @@ class UnionFind(object):
             self.father[n] = n
             self.count += 1
         
+    def add(self, node):
+        """
+        Add node as we go, don't need all nodes
+        during initialization.
+        """
+        if node not in self.father:
+            self.father[node] = node
+            self.count += 1
+
     def find(self, node):
         if self.father[node] == node:
             return node
