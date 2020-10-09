@@ -13,10 +13,16 @@ Note: you can assume that no duplicate edges will appear in edges. Since all edg
 """
 
 class Solution:
+    """
+    A tree should have exactly n - 1 edges, return if that's not the case
+    
+    BSF traverse the entire graph, should hit all nodes, If not then some nodes are disconnected, return false.
+    """
     def validTree(self, n: int, edges: List[List[int]]) -> bool:
         return self.bfs(n, edges)
     
     def bfs(self, n, edges):
+        # A tree should have exactly n - 1 edges
         if not n or len(edges) != n - 1: return False
         
         d = []
