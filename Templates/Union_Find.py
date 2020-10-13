@@ -129,3 +129,43 @@ class UnionFind(object):
             
     def subsets(self):
         return self.fathers
+
+    
+# =============== Memorization, amortized O(1) on find and union =============
+# 1. Mark the true root of each node in find
+# 2. Keep track of the size of each set, make bigger set the root of smaller set to reduce tree height
+class UnionFind:
+    def __init__(self, n):
+        self.size = [1]*n
+        self.parent = list(range(n))
+    
+    def find(self, n):
+        if self.parent[n] == n:
+            return n
+        
+        root = n
+        while self.parent[root] != root:
+            root = self.parent[root]
+        
+        # memorization, mark the true root of each node
+        while n != root:
+            old_root = self.parent[n]
+            self.parent[n] = root
+            n = old_root
+            
+        return root
+    
+    def union(self, n1, n2):
+        p1 = self.find(n1)
+        p2 = self.find(n2)
+        if p1 == p2:
+            return False
+        
+        if self.size[p1] >= self.size[p2]:
+            self.parent[p2] = self.parent[p1]
+            self.size[p1] += self.size[p2]
+        else:
+            self.parent[p1] = self.parent[p2]
+            self.size[p2] += self.size[p1]
+
+        return True
