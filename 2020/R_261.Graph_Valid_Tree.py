@@ -19,7 +19,8 @@ class Solution:
     BSF traverse the entire graph, should hit all nodes, If not then some nodes are disconnected, return false.
     """
     def validTree(self, n: int, edges: List[List[int]]) -> bool:
-        return self.bfs(n, edges)
+        #return self.bfs(n, edges)
+        return self.union_find(n, edges)
     
     def bfs(self, n, edges):
         # A tree should have exactly n - 1 edges
@@ -46,3 +47,51 @@ class Solution:
                     visited[neighbor] = True
                     
         return been == n
+    
+    def union_find(self, n, edges):
+        if len(edges) != n - 1:
+            return False
+        
+        uf = UnionFind(n)
+        for e in edges:
+            if not uf.union(e[0], e[1]):
+                return False
+            
+        return True
+    
+    
+class UnionFind:
+    def __init__(self, n):
+        self.size = [1]*n
+        self.parent = list(range(n))
+    
+    def find(self, n):
+        if self.parent[n] == n:
+            return n
+        
+        root = n
+        while self.parent[root] != root:
+            root = self.parent[root]
+        
+        # memorization, mark the true root of each node
+        while n != root:
+            old_root = self.parent[n]
+            self.parent[n] = root
+            n = old_root
+            
+        return root
+    
+    def union(self, n1, n2):
+        p1 = self.find(n1)
+        p2 = self.find(n2)
+        if p1 == p2:
+            return False
+        
+        if self.size[p1] >= self.size[p2]:
+            self.parent[p2] = self.parent[p1]
+            self.size[p1] += self.size[p2]
+        else:
+            self.parent[p1] = self.parent[p2]
+            self.size[p2] += self.size[p1]
+
+        return True
